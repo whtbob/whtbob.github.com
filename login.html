@@ -48,8 +48,8 @@
     </div>
 
     <script>
-        // 默认密码（首次登录后建议修改）
-        const ADMIN_PASSWORD = "admin123"; // 请替换为你自己的密码
+        // 请修改为你的密码（重要！）
+        const ADMIN_PASSWORD = "admin123";
 
         // 显示/隐藏密码
         document.getElementById('togglePwd').addEventListener('click', function() {
@@ -65,13 +65,10 @@
             const inputPwd = document.getElementById('password').value;
             
             if (inputPwd === ADMIN_PASSWORD) {
-                // 登录成功，存储登录状态
                 localStorage.setItem('isLoggedIn', 'true');
-                // 跳转到后台（使用两种跳转方式确保生效）
                 window.location.href = 'admin.html';
-                // 兼容处理：如果第一种跳转失败，300ms后尝试第二种
                 setTimeout(() => {
-                    if (window.location.pathname !== '/admin.html') {
+                    if (!window.location.href.includes('admin.html')) {
                         window.location.assign('https://whtbob.github.io/admin.html');
                     }
                 }, 300);
