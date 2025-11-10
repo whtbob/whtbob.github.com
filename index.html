@@ -1,274 +1,263 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title>途·寻 - 沙漠探险小说</title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="1894.7">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #181a1f; -webkit-text-stroke: #181a1f}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #181a1f; -webkit-text-stroke: #181a1f; min-height: 18.0px}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'PingFang SC'; color: #181a1f; -webkit-text-stroke: #181a1f}
-    span.s1 {font-kerning: none}
-    span.s2 {font: 16.0px 'PingFang SC'; font-kerning: none}
-    span.s3 {font: 16.0px 'Helvetica Neue'; font-kerning: none}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>途·寻 - 沙漠探险小说</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#D2691E',
+                        secondary: '#CD853F',
+                        light: '#FFDEAD',
+                        dark: '#8B4513'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .chapter-item:hover { background-color: #FFF8E7; }
+        .read-area { line-height: 1.8; }
+        .reward-qrcode { max-width: 200px; max-height: 200px; }
+    </style>
 </head>
-<body>
-<p class="p1"><span class="s1">&lt;!DOCTYPE html&gt;</span></p>
-<p class="p1"><span class="s1">&lt;html lang="zh-CN"&gt;</span></p>
-<p class="p1"><span class="s1">&lt;head&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;title&gt;</span><span class="s2">途</span><span class="s1">·</span><span class="s2">寻</span><span class="s1"> - </span><span class="s2">沙漠探险小说</span><span class="s1">&lt;/title&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">外部资源（无需修改）</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.tailwindcss.com"&gt;&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">沙漠风格配色</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>tailwind.config = {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>theme: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>extend: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>colors: {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>primary: '#D2691E', // </span><span class="s2">沙漠棕</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>secondary: '#CD853F', // </span><span class="s2">秘鲁色</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>light: '#FFDEAD', // </span><span class="s2">小麦色</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>dark: '#8B4513' // </span><span class="s2">深棕色</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;style&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>/* </span><span class="s2">阅读页样式优化</span><span class="s1"> */</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.chapter-item:hover { background-color: #FFF8E7; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.read-area { line-height: 1.8; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>.reward-qrcode { max-width: 200px; max-height: 200px; }</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/head&gt;</span></p>
-<p class="p1"><span class="s1">&lt;body class="bg-gray-50 font-serif text-gray-800"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">导航栏</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;nav class="bg-primary text-white shadow-md sticky top-0 z-40"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-4 py-3 flex justify-between items-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex items-center space-x-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;i class="fa fa-book text-xl"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;span class="text-xl font-bold"&gt;</span><span class="s2">途</span><span class="s1">·</span><span class="s2">寻</span><span class="s1">&lt;/span&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- </span><span class="s2">桌面导航</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="hidden md:flex items-center space-x-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#home" class="hover:text-light transition-colors"&gt;</span><span class="s2">首页</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#intro" class="hover:text-light transition-colors"&gt;</span><span class="s2">作品介绍</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#read" class="hover:text-light transition-colors"&gt;</span><span class="s2">开始阅读</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#reward" class="hover:text-light transition-colors"&gt;</span><span class="s2">支持作者</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="admin.html" class="hover:text-light transition-colors"&gt;</span><span class="s2">作者后台</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- </span><span class="s2">移动端菜单按钮</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button id="menuBtn" class="md:hidden text-white focus:outline-none"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;i class="fa fa-bars text-xl"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;!-- </span><span class="s2">移动端导航菜单</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div id="mobileMenu" class="md:hidden hidden bg-primary border-t border-secondary"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="container mx-auto px-4 py-2 flex flex-col space-y-3"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#home" class="block py-2 hover:text-light transition-colors"&gt;</span><span class="s2">首页</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#intro" class="block py-2 hover:text-light transition-colors"&gt;</span><span class="s2">作品介绍</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#read" class="block py-2 hover:text-light transition-colors"&gt;</span><span class="s2">开始阅读</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#reward" class="block py-2 hover:text-light transition-colors"&gt;</span><span class="s2">支持作者</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="admin.html" class="block py-2 hover:text-light transition-colors"&gt;</span><span class="s2">作者后台</span><span class="s1">&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/nav&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">首页板块</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="home" class="py-12 bg-light"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-4 text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="max-w-3xl mx-auto"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h1 class="text-3xl md:text-4xl font-bold text-primary mb-6"&gt;</span><span class="s2">途</span><span class="s1">·</span><span class="s2">寻</span><span class="s1">&lt;/h1&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;p class="text-xl text-gray-700 mb-8"&gt;</span><span class="s2">沙漠探险</span><span class="s1"> · </span><span class="s2">父子情</span><span class="s1"> · </span><span class="s2">魔法元素</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="mb-10"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;img src="https://picsum.photos/id/1036/600/300" alt="</span><span class="s2">沙漠胡杨</span><span class="s1">" class="rounded-lg shadow-md mx-auto max-w-full"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;a href="#read" class="inline-block bg-primary text-white px-8 py-3 rounded-md hover:bg-dark transition-colors text-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span></span><span class="s2">开始阅读</span><span class="s1"> &lt;i class="fa fa-angle-right ml-2"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/a&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">作品介绍板块</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="intro" class="py-12 bg-white"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-bold text-center text-primary mb-10"&gt;</span><span class="s2">作品介绍</span><span class="s1">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="max-w-3xl mx-auto"&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                </span>&lt;p class="mb-4 text-gray-700"&gt;</span><span class="s1">《途</span><span class="s3">·</span><span class="s1">寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                </span>&lt;p class="mb-4 text-gray-700"&gt;</span><span class="s1">小说融合了真实的沙漠地理风貌与奇幻的魔法元素，既有惊心动魄的探险情节，也有温暖治愈的亲情描写，适合所有喜欢冒险与成长主题的读者。</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-light p-6 rounded-lg shadow-sm"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;i class="fa fa-compass text-3xl text-primary mb-4"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-lg mb-2"&gt;</span><span class="s2">沙漠探险</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-600"&gt;</span><span class="s2">穿越塔克拉玛干沙漠，遭遇沙暴、海市蜃楼等挑战</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-light p-6 rounded-lg shadow-sm"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;i class="fa fa-heart text-3xl text-primary mb-4"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-lg mb-2"&gt;</span><span class="s2">父子情深</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-600"&gt;</span><span class="s2">从误解到理解，在寻找中重建父子间的情感联结</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="bg-light p-6 rounded-lg shadow-sm"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;i class="fa fa-magic text-3xl text-primary mb-4"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h3 class="font-bold text-lg mb-2"&gt;</span><span class="s2">魔法元素</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;p class="text-gray-600"&gt;</span><span class="s2">神秘手帐解锁自然魔法，与沙漠精灵达成契约</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">阅读板块</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="read" class="py-12 bg-gray-50"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-bold text-center text-primary mb-10"&gt;</span><span class="s2">开始阅读</span><span class="s1">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex flex-col md:flex-row max-w-6xl mx-auto bg-white rounded-lg shadow-md overflow-hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- </span><span class="s2">章节列表</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="md:w-1/4 md:border-r border-gray-200 p-6 bg-light"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="font-bold text-lg mb-4 text-primary"&gt;</span><span class="s2">章节列表</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="space-y-2 max-h-[500px] overflow-y-auto pr-2"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-primary"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s2">第一章：沙漠的召唤</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s2">第二章：神秘的手帐</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s2">第三章：父子同行</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s2">第四章：胡杨秘境</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s2">第五章：沙暴中的约定</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;!-- </span><span class="s2">阅读内容区</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div class="md:w-3/4 p-6 md:p-10 read-area"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;h3 class="text-xl font-bold mb-6 text-primary"&gt;</span><span class="s2">第一章：沙漠的召唤</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                    </span>&lt;p class="mb-4 text-gray-700"&gt;</span><span class="s1">烈日炙烤着无垠的沙漠，金黄的沙粒在阳光下闪烁着刺眼的光芒。王磊站在沙丘顶端，眯着眼睛眺望远方，汗水顺着他的脸颊滑落，在下巴处汇聚成滴，然后滴落在滚烫的沙地上，瞬间蒸发无踪。</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                    </span>&lt;p class="mb-4 text-gray-700"&gt;</span><span class="s1">他已经在这片沙漠中跋涉了三天。三天来，除了偶尔掠过天际的飞鸟，他没有见到任何生命的迹象。随身携带的水已经不多了，他必须在今天找到水源，否则将很难撑过明天。</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                    </span>&lt;p class="mb-4 text-gray-700"&gt;</span><span class="s1">就在他感到绝望的时候，远处的地平线上突然出现了一抹绿色。王磊的心中燃起了希望，他加快脚步，朝着那抹绿色走去。随着距离的拉近，他看清了那是一棵孤独的胡杨树，矗立在茫茫沙海之中，显得格外突兀。</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                    </span>&lt;p class="mb-4 text-gray-700"&gt;</span><span class="s1">走近胡杨树，王磊发现树下有一个小小的水洼，水质清澈见底。他欣喜若狂，迫不及待地冲过去，掬起一捧水喝了起来。甘甜的泉水滋润着他干裂的喉咙，让他感到一阵舒畅。</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                    </span>&lt;p class="mb-4 text-gray-700"&gt;“</span><span class="s1">这棵树</span><span class="s3">……</span><span class="s1">怎么会在这里？</span><span class="s3">”</span><span class="s1">王磊抚摸着胡杨粗糙的树干，心中充满疑惑。他曾在地理书上看过，胡杨虽有</span><span class="s3">“</span><span class="s1">沙漠脊梁</span><span class="s3">”</span><span class="s1">之称，却也需要依靠地下水生存，如此偏僻的沙丘顶端，怎么会有地下水？</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                    </span>&lt;p class="mb-4 text-gray-700"&gt;</span><span class="s1">就在这时，他注意到树干上刻着一个奇怪的符号</span><span class="s3">——</span><span class="s1">像一个旋转的沙暴，中间嵌着一颗水滴。这个符号他似曾相识，却又想不起在哪里见过。他掏出父亲留下的旧笔记本，翻到最后几页，果然在一张草图上看到了相同的符号。</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                    </span>&lt;p class="mb-4 text-gray-700"&gt;“</span><span class="s1">父亲也来过这里？</span><span class="s3">”</span><span class="s1">王磊的心跳骤然加快。三个月前，父亲作为地质考察队队长进入沙漠后失联，只留下这本笔记本和一句</span><span class="s3">“</span><span class="s1">去胡杨指引的地方</span><span class="s3">”</span><span class="s1">的留言。</span><span class="s3">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div class="flex justify-between mt-10"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button class="bg-light text-primary px-6 py-2 rounded-md hover:bg-gray-200 transition-colors disabled:opacity-50" disabled&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;i class="fa fa-angle-left mr-2"&gt;&lt;/i&gt; </span><span class="s2">上一章</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;button class="bg-light text-primary px-6 py-2 rounded-md hover:bg-gray-200 transition-colors"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                            </span></span><span class="s2">下一章</span><span class="s1"> &lt;i class="fa fa-angle-right ml-2"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">打赏板块</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;section id="reward" class="py-12 bg-light"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-4 text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;h2 class="text-2xl font-bold text-primary mb-6"&gt;</span><span class="s2">支持作者</span><span class="s1">&lt;/h2&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-700 mb-8 max-w-2xl mx-auto"&gt;</span><span class="s2">您的每一份支持，都是作者创作的动力。可以通过微信扫码打赏，金额随意，感谢您的喜爱！</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;button id="openRewardModal" class="bg-primary text-white px-8 py-3 rounded-md hover:bg-dark transition-colors text-lg"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span></span><span class="s2">微信扫码打赏</span><span class="s1"> &lt;i class="fa fa-qrcode ml-2"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/section&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">页脚</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;footer class="bg-dark text-white py-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="container mx-auto px-4 text-center"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p&gt;</span><span class="s2">《途</span><span class="s1">·</span><span class="s2">寻》小说平台</span><span class="s1"> &amp;copy; 2025 </span><span class="s2">版权所有</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-400 text-sm mt-2"&gt;</span><span class="s2">联系作者：</span><span class="s1">tuxun@example.com&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/footer&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">微信打赏弹窗</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;div id="rewardModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;div class="bg-white rounded-lg shadow-xl w-full max-w-sm p-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div class="flex justify-between items-center mb-6"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h3 class="text-xl font-bold text-primary"&gt;</span><span class="s2">微信扫码打赏</span><span class="s1">&lt;/h3&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;button id="closeRewardModal" class="text-gray-500 hover:text-gray-700"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;i class="fa fa-times text-xl"&gt;&lt;/i&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/button&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;!-- </span><span class="s2">替换这里的</span><span class="s1">src</span><span class="s2">为你的微信赞赏码图片链接</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;img src="https://picsum.photos/id/1060/200/200" alt="</span><span class="s2">微信赞赏码</span><span class="s1">" class="reward-qrcode mx-auto border-2 border-light rounded-md mb-4"&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-600 text-center mb-2"&gt;</span><span class="s2">用微信扫描二维码</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>&lt;p class="text-gray-500 text-sm text-center"&gt;</span><span class="s2">打赏金额随意，感谢支持！</span><span class="s1">&lt;/p&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;!-- </span><span class="s2">脚本（无需修改）</span><span class="s1"> --&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;script&gt;</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// </span><span class="s2">移动端菜单切换</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.getElementById('menuBtn').addEventListener('click', function() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>const mobileMenu = document.getElementById('mobileMenu');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>mobileMenu.classList.toggle('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// </span><span class="s2">章节切换</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.querySelectorAll('.chapter-item').forEach((item, index) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>item.addEventListener('click', function() {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// </span><span class="s2">移除所有章节选中状态</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>document.querySelectorAll('.chapter-item').forEach(ch =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ch.classList.remove('border-primary');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>ch.classList.add('border-transparent');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>// </span><span class="s2">添加当前章节选中状态</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>this.classList.remove('border-transparent');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>this.classList.add('border-primary');</span></p>
-<p class="p3"><span class="s3"><span class="Apple-converted-space">                </span>// </span><span class="s1">这里可添加章节内容切换逻辑，当前为静态演示</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// </span><span class="s2">打赏弹窗控制</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const openRewardBtn = document.getElementById('openRewardModal');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const closeRewardBtn = document.getElementById('closeRewardModal');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>const rewardModal = document.getElementById('rewardModal');</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>openRewardBtn.addEventListener('click', () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>rewardModal.classList.remove('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>closeRewardBtn.addEventListener('click', () =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>rewardModal.classList.add('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// </span><span class="s2">点击弹窗外部关闭</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>rewardModal.addEventListener('click', (e) =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>if (e.target === rewardModal) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>rewardModal.classList.add('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p2"><span class="s1"></span><br></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>// </span><span class="s2">平滑滚动</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>document.querySelectorAll('a[href^="#"]').forEach(anchor =&gt; {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>anchor.addEventListener('click', function (e) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>e.preventDefault();</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const targetId = this.getAttribute('href');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>const targetElement = document.querySelector(targetId);</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>if (targetElement) {</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>window.scrollTo({</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>top: targetElement.offsetTop - 80,</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                        </span>behavior: 'smooth'</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>// </span><span class="s2">关闭移动端菜单</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                    </span>document.getElementById('mobileMenu').classList.add('hidden');</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">        </span>});</span></p>
-<p class="p1"><span class="s1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/body&gt;</span></p>
-<p class="p1"><span class="s1">&lt;/html&gt;</span></p>
+<body class="bg-gray-50 font-serif text-gray-800">
+    <!-- 导航栏 -->
+    <nav class="bg-primary text-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <i class="fa fa-book text-xl"></i>
+                <span class="text-xl font-bold">途·寻</span>
+            </div>
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home" class="hover:text-light transition-colors">首页</a>
+                <a href="#intro" class="hover:text-light transition-colors">作品介绍</a>
+                <a href="#read" class="hover:text-light transition-colors">开始阅读</a>
+                <a href="#reward" class="hover:text-light transition-colors">支持作者</a>
+                <a href="admin.html" class="hover:text-light transition-colors">作者后台</a>
+            </div>
+            <button id="menuBtn" class="md:hidden text-white focus:outline-none">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+        <div id="mobileMenu" class="md:hidden hidden bg-primary border-t border-secondary">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="block py-2 hover:text-light transition-colors">首页</a>
+                <a href="#intro" class="block py-2 hover:text-light transition-colors">作品介绍</a>
+                <a href="#read" class="block py-2 hover:text-light transition-colors">开始阅读</a>
+                <a href="#reward" class="block py-2 hover:text-light transition-colors">支持作者</a>
+                <a href="admin.html" class="block py-2 hover:text-light transition-colors">作者后台</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 首页板块 -->
+    <section id="home" class="py-12 bg-light">
+        <div class="container mx-auto px-4 text-center">
+            <div class="max-w-3xl mx-auto">
+                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-6">途·寻</h1>
+                <p class="text-xl text-gray-700 mb-8">沙漠探险 · 父子情 · 魔法元素</p>
+                <div class="mb-10">
+                    <img src="https://picsum.photos/id/1036/600/300" alt="沙漠胡杨" class="rounded-lg shadow-md mx-auto max-w-full">
+                </div>
+                <a href="#read" class="inline-block bg-primary text-white px-8 py-3 rounded-md hover:bg-dark transition-colors text-lg">
+                    开始阅读 <i class="fa fa-angle-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作品介绍 -->
+    <section id="intro" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center text-primary mb-10">作品介绍</h2>
+            <div class="max-w-3xl mx-auto">
+                <p class="mb-4 text-gray-700">《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
+                    <div class="bg-light p-6 rounded-lg shadow-sm">
+                        <i class="fa fa-compass text-3xl text-primary mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">沙漠探险</h3>
+                        <p class="text-gray-600">穿越塔克拉玛干沙漠，遭遇沙暴、海市蜃楼等挑战</p>
+                    </div>
+                    <div class="bg-light p-6 rounded-lg shadow-sm">
+                        <i class="fa fa-heart text-3xl text-primary mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">父子情深</h3>
+                        <p class="text-gray-600">从误解到理解，在寻找中重建父子间的情感联结</p>
+                    </div>
+                    <div class="bg-light p-6 rounded-lg shadow-sm">
+                        <i class="fa fa-magic text-3xl text-primary mb-4"></i>
+                        <h3 class="font-bold text-lg mb-2">魔法元素</h3>
+                        <p class="text-gray-600">神秘手帐解锁自然魔法，与沙漠精灵达成契约</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 阅读板块 -->
+    <section id="read" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center text-primary mb-10">开始阅读</h2>
+            <div class="flex flex-col md:flex-row max-w-6xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                <!-- 章节列表 -->
+                <div class="md:w-1/4 md:border-r border-gray-200 p-6 bg-light">
+                    <h3 class="font-bold text-lg mb-4 text-primary">章节列表</h3>
+                    <div class="space-y-2 max-h-[500px] overflow-y-auto pr-2">
+                        <div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-primary" onclick="showChapter(1)">
+                            第一章：沙漠的召唤
+                        </div>
+                        <div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent" onclick="showChapter(2)">
+                            第二章：神秘的手帐
+                        </div>
+                        <div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent" onclick="showChapter(3)">
+                            第三章：父子同行
+                        </div>
+                    </div>
+                </div>
+                <!-- 阅读内容区 -->
+                <div class="md:w-3/4 p-6 md:p-10 read-area">
+                    <!-- 第一章内容 -->
+                    <div id="chapter1">
+                        <h3 class="text-xl font-bold mb-6 text-primary">第一章：沙漠的召唤</h3>
+                        <p class="mb-4 text-gray-700">烈日炙烤着无垠的沙漠，金黄的沙粒在阳光下闪烁着刺眼的光芒。王磊站在沙丘顶端，眯着眼睛眺望远方，汗水顺着他的脸颊滑落，在下巴处汇聚成滴，然后滴落在滚烫的沙地上，瞬间蒸发无踪。</p>
+                        <p class="mb-4 text-gray-700">他已经在这片沙漠中跋涉了三天。三天来，除了偶尔掠过天际的飞鸟，他没有见到任何生命的迹象。随身携带的水已经不多了，他必须在今天找到水源，否则将很难撑过明天。</p>
+                        <p class="mb-4 text-gray-700">就在他感到绝望的时候，远处的地平线上突然出现了一抹绿色。王磊的心中燃起了希望，他加快脚步，朝着那抹绿色走去。随着距离的拉近，他看清了那是一棵孤独的胡杨树，矗立在茫茫沙海之中，显得格外突兀。</p>
+                    </div>
+
+                    <!-- 第二章内容 -->
+                    <div id="chapter2" class="hidden">
+                        <h3 class="text-xl font-bold mb-6 text-primary">第二章：神秘的手帐</h3>
+                        <p class="mb-4 text-gray-700">王磊靠在胡杨树下休息，指尖摩挲着树干上的奇怪符号。他再次翻开父亲的笔记本，试图从那些潦草的字迹中找到线索。突然，一张折叠的纸条从笔记本中滑落，掉在沙地上。</p>
+                        <p class="mb-4 text-gray-700">他捡起纸条展开，上面是父亲熟悉的字迹：“当沙暴来临时，跟着胡杨的影子走，手帐会指引你找到水源——给磊磊”。纸条的背面，画着一个和树干上相同的沙暴符号。</p>
+                        <p class="mb-4 text-gray-700">“手帐？”王磊愣住了。父亲留下的这本笔记本，他一直以为只是普通的考察记录，难道还有别的秘密？他重新翻阅笔记本，发现最后几页的纸张材质明显不同，上面用银色墨水画着复杂的图案，像是某种地图。</p>
+                    </div>
+
+                    <!-- 第三章内容 -->
+                    <div id="chapter3" class="hidden">
+                        <h3 class="text-xl font-bold mb-6 text-primary">第三章：父子同行</h3>
+                        <p class="mb-4 text-gray-700">回忆像潮水般涌来。王磊想起小时候，父亲总在睡前给他讲沙漠的故事，说那里的星星比城市里亮一百倍，说胡杨能活三千年。那时他总缠着要一起去，父亲却总说：“等你长大了，能自己找到水源时再说。”</p>
+                        <p class="mb-4 text-gray-700">现在他真的来了，带着父亲的笔记本，走在这片既熟悉又陌生的沙漠里。他突然明白，父亲或许早就计划好了这一切——不是失踪，而是在某个地方等他，等他独自完成这场成长的试炼。</p>
+                    </div>
+
+                    <div class="flex justify-between mt-10">
+                        <button class="bg-light text-primary px-6 py-2 rounded-md hover:bg-gray-200 transition-colors" onclick="prevChapter()">
+                            <i class="fa fa-angle-left mr-2"></i> 上一章
+                        </button>
+                        <button class="bg-light text-primary px-6 py-2 rounded-md hover:bg-gray-200 transition-colors" onclick="nextChapter()">
+                            下一章 <i class="fa fa-angle-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 打赏板块 -->
+    <section id="reward" class="py-12 bg-light">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-primary mb-6">支持作者</h2>
+            <p class="text-gray-700 mb-8 max-w-2xl mx-auto">您的每一份支持，都是作者创作的动力。可以通过微信扫码打赏，金额随意，感谢您的喜爱！</p>
+            <button id="openRewardModal" class="bg-primary text-white px-8 py-3 rounded-md hover:bg-dark transition-colors text-lg">
+                微信扫码打赏 <i class="fa fa-qrcode ml-2"></i>
+            </button>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-6">
+        <div class="container mx-auto px-4 text-center">
+            <p>《途·寻》小说平台 &copy; 2025 版权所有</p>
+            <p class="text-gray-400 text-sm mt-2">联系作者：tuxun@example.com</p>
+        </div>
+    </footer>
+
+    <!-- 微信打赏弹窗 -->
+    <div id="rewardModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-sm p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-primary">微信扫码打赏</h3>
+                <button id="closeRewardModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <img src="https://picsum.photos/id/1060/200/200" alt="微信赞赏码" class="reward-qrcode mx-auto border-2 border-light rounded-md mb-4">
+            <p class="text-gray-600 text-center mb-2">用微信扫描二维码</p>
+            <p class="text-gray-500 text-sm text-center">打赏金额随意，感谢支持！</p>
+        </div>
+    </div>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 章节切换功能
+        let currentChapter = 1;
+        const totalChapters = 3;
+
+        function showChapter(num) {
+            // 隐藏所有章节
+            document.querySelectorAll('[id^="chapter"]').forEach(chapter => {
+                chapter.classList.add('hidden');
+            });
+            // 显示选中章节
+            document.getElementById('chapter' + num).classList.remove('hidden');
+            // 更新选中样式
+            document.querySelectorAll('.chapter-item').forEach((item, index) => {
+                if (index + 1 === num) {
+                    item.classList.add('border-primary');
+                    item.classList.remove('border-transparent');
+                } else {
+                    item.classList.remove('border-primary');
+                    item.classList.add('border-transparent');
+                }
+            });
+            currentChapter = num;
+        }
+
+        // 上一章/下一章
+        function prevChapter() {
+            if (currentChapter > 1) {
+                showChapter(currentChapter - 1);
+            }
+        }
+
+        function nextChapter() {
+            if (currentChapter < totalChapters) {
+                showChapter(currentChapter + 1);
+            }
+        }
+
+        // 打赏弹窗控制
+        const openRewardBtn = document.getElementById('openRewardModal');
+        const closeRewardBtn = document.getElementById('closeRewardModal');
+        const rewardModal = document.getElementById('rewardModal');
+
+        openRewardBtn.addEventListener('click', () => rewardModal.classList.remove('hidden'));
+        closeRewardBtn.addEventListener('click', () => rewardModal.classList.add('hidden'));
+        rewardModal.addEventListener('click', (e) => {
+            if (e.target === rewardModal) rewardModal.classList.add('hidden');
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                document.querySelector(targetId).scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+                document.getElementById('mobileMenu').classList.add('hidden');
+            });
+        });
+    </script>
 </body>
 </html>
