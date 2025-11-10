@@ -121,11 +121,13 @@
                 <div class="md:w-3/4 p-6 md:p-10 read-area">
                     <div id="chapter1">
                         <h3 class="text-xl font-bold mb-6 text-primary">第一章：沙漠的召唤</h3>
-                        <p class="mb-4 text-gray-700">烈日炙烤着无垠的沙漠，金黄的沙粒在阳光下闪烁着刺眼的光芒。</p>
+                        <p class="mb-4 text-gray-700">烈日炙烤着无垠的沙漠，金黄的沙粒在阳光下闪烁着刺眼的光芒。王磊紧了紧肩上的背包带，喉咙像被砂纸磨过一样干涩。他已经三天没见到像样的绿洲了，水壶里的水只剩下不到三分之一。</p>
+                        <p class="mb-4 text-gray-700">"爸，你到底在哪里..."他喃喃自语，从怀里掏出一张泛黄的照片。照片上，年轻的父亲站在沙漠胡杨下，笑得一脸灿烂。这是父亲失踪前留下的最后线索。</p>
                     </div>
                     <div id="chapter2" class="hidden">
                         <h3 class="text-xl font-bold mb-6 text-primary">第二章：神秘的手帐</h3>
-                        <p class="mb-4 text-gray-700">王磊靠在胡杨树下休息，指尖摩挲着树干上的奇怪符号。</p>
+                        <p class="mb-4 text-gray-700">王磊靠在胡杨树下休息，指尖摩挲着树干上的奇怪符号。这些符号和父亲手帐里画的图案惊人地相似。他小心地从背包里取出那本蓝色封皮的手帐，阳光透过树叶的缝隙落在泛黄的纸页上。</p>
+                        <p class="mb-4 text-gray-700">手帐第17页画着一个简易地图，标注着"月落之地"，旁边用红笔写着："风沙会指引方向，星光将打开大门"。王磊抬头望了望天空，远处的沙丘在夕阳下勾勒出金色的轮廓。</p>
                     </div>
                     <div class="flex justify-between mt-10">
                         <button class="bg-light text-primary px-6 py-2 rounded-md hover:bg-gray-200 transition-colors" onclick="prevChapter()">
@@ -200,41 +202,44 @@
     </div>
 
     <script>
-        // 移动端菜单
-        document.getElementById('menuBtn').addEventListener('click', () => {
-            document.getElementById('mobileMenu').classList.toggle('hidden');
+        // 移动端菜单切换
+        document.getElementById('menuBtn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('hidden');
         });
 
-        // 章节切换
+        // 章节切换功能
         let currentChapter = 1;
         const totalChapters = 2;
+
         function showChapter(num) {
-            document.querySelectorAll('[id^="chapter"]').forEach(ch => ch.classList.add('hidden'));
+            document.querySelectorAll('[id^="chapter"]').forEach(chapter => chapter.classList.add('hidden'));
             document.getElementById('chapter' + num).classList.remove('hidden');
-            document.querySelectorAll('.chapter-item').forEach((item, i) => {
-                item.classList.toggle('border-primary', i + 1 === num);
-                item.classList.toggle('border-transparent', i + 1 !== num);
+            document.querySelectorAll('.chapter-item').forEach((item, index) => {
+                if (index + 1 === num) {
+                    item.classList.add('border-primary');
+                    item.classList.remove('border-transparent');
+                } else {
+                    item.classList.remove('border-primary');
+                    item.classList.add('border-transparent');
+                }
             });
             currentChapter = num;
         }
+
         function prevChapter() { if (currentChapter > 1) showChapter(currentChapter - 1); }
         function nextChapter() { if (currentChapter < totalChapters) showChapter(currentChapter + 1); }
 
-        // 打赏弹窗
-        document.getElementById('openRewardModal').addEventListener('click', () => {
-            document.getElementById('rewardModal').classList.remove('hidden');
-        });
-        document.getElementById('closeRewardModal').addEventListener('click', () => {
-            document.getElementById('rewardModal').classList.add('hidden');
-        });
-        document.getElementById('rewardModal').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('rewardModal')) {
-                document.getElementById('rewardModal').classList.add('hidden');
-            }
-        });
+        // 打赏弹窗控制
+        const openRewardBtn = document.getElementById('openRewardModal');
+        const closeRewardBtn = document.getElementById('closeRewardModal');
+        const rewardModal = document.getElementById('rewardModal');
+        openRewardBtn.addEventListener('click', () => rewardModal.classList.remove('hidden'));
+        closeRewardBtn.addEventListener('click', () => rewardModal.classList.add('hidden'));
+        rewardModal.addEventListener('click', (e) => { if (e.target === rewardModal) rewardModal.classList.add('hidden'); });
 
         // 评论功能
-        document.getElementById('commentForm').addEventListener('submit', (e) => {
+        document.getElementById('commentForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const name = document.getElementById('commentName').value;
             const content = document.getElementById('commentContent').value;
@@ -308,22 +313,27 @@
             });
         }
 
-        // 页面加载
-        window.onload = () => {
+        // 页面加载时加载内容
+        window.onload = function() {
+            // 加载作品介绍
             if (localStorage.getItem('introContent')) {
                 document.getElementById('introContent').innerHTML = localStorage.getItem('introContent');
             }
+            // 加载作者介绍
             if (localStorage.getItem('authorContent')) {
                 document.getElementById('authorContent').innerHTML = localStorage.getItem('authorContent');
             }
+            // 加载首页图片
             if (localStorage.getItem('homeImage')) {
                 document.getElementById('homeImage').src = localStorage.getItem('homeImage');
             }
+            // 加载打赏二维码
             if (localStorage.getItem('rewardQrcode')) {
                 document.getElementById('rewardQrcode').src = localStorage.getItem('rewardQrcode');
             }
+            // 加载评论
             loadComments();
-        };
+        }
     </script>
 </body>
 </html>

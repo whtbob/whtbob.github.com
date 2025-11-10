@@ -43,7 +43,7 @@
         </form>
 
         <div class="mt-6 text-center text-gray-500 text-sm">
-            <p>忘记密码？请联系系统管理员重置</p>
+            <p>忘记密码？请修改login.html中的密码设置</p>
         </div>
     </div>
 
@@ -66,12 +66,8 @@
             
             if (inputPwd === ADMIN_PASSWORD) {
                 localStorage.setItem('isLoggedIn', 'true');
-                window.location.href = 'admin.html';
-                setTimeout(() => {
-                    if (!window.location.href.includes('admin.html')) {
-                        window.location.assign('https://whtbob.github.io/admin.html');
-                    }
-                }, 300);
+                // 直接跳转到后台（强制绝对路径）
+                window.location.href = 'https://whtbob.github.io/admin.html';
             } else {
                 alert('密码错误，请重新输入');
                 document.getElementById('password').focus();

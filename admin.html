@@ -22,18 +22,15 @@
         .sidebar-link { transition: all 0.3s; }
         .sidebar-link.active { background-color: #D2691E; color: white; }
         .form-input { border: 1px solid #ddd; padding: 8px; border-radius: 4px; width: 100%; }
+        .image-item { position: relative; display: inline-block; margin: 10px; }
+        .image-delete { position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; width: 20px; height: 20px; text-align: center; cursor: pointer; font-size: 12px; }
     </style>
 </head>
 <body class="bg-gray-100">
     <!-- 登录验证 -->
     <script>
         if (localStorage.getItem('isLoggedIn') !== 'true') {
-            window.location.href = 'login.html';
-            setTimeout(() => {
-                if (!window.location.href.includes('login.html')) {
-                    window.location.assign('https://whtbob.github.io/login.html');
-                }
-            }, 300);
+            window.location.href = 'https://whtbob.github.io/login.html';
         }
     </script>
 
@@ -139,8 +136,90 @@
                                     <button class="text-red-500 hover:text-red-700">删除</button>
                                 </td>
                             </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-3">2</td>
+                                <td class="py-3">第二章：神秘的手帐</td>
+                                <td class="py-3">
+                                    <button class="text-blue-500 hover:text-blue-700 mr-3">编辑</button>
+                                    <button class="text-red-500 hover:text-red-700">删除</button>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
+                </div>
+            </div>
+
+            <!-- 图片管理 -->
+            <div id="imagesPage" class="p-6 hidden">
+                <div class="bg-white rounded-lg shadow p-6 mb-8">
+                    <h3 class="text-lg font-semibold mb-4">上传图片</h3>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer mb-6" id="imageUploadArea">
+                        <input type="file" id="imageFile" class="hidden" accept="image/*">
+                        <i class="fa fa-cloud-upload text-4xl text-gray-400 mb-3"></i>
+                        <p class="text-gray-600">点击或拖拽图片至此处上传</p>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">图片用途</label>
+                        <select id="imageType" class="form-input">
+                            <option value="homeImage">首页主图</option>
+                            <option value="rewardQrcode">打赏二维码</option>
+                        </select>
+                    </div>
+                    <button id="saveImage" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors disabled:opacity-50" disabled>
+                        保存图片
+                    </button>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-semibold mb-4">已上传图片</h3>
+                    <div id="imageList">
+                        <div class="image-item">
+                            <img src="https://picsum.photos/id/1036/150/100" alt="首页图片" class="w-32 h-24 object-cover rounded border" id="preview-homeImage">
+                            <div class="image-delete" onclick="deleteImage('homeImage')">×</div>
+                            <p class="text-sm text-center mt-1">首页主图</p>
+                        </div>
+                        <div class="image-item">
+                            <img src="https://picsum.photos/id/1060/150/150" alt="打赏二维码" class="w-32 h-32 object-cover rounded border" id="preview-rewardQrcode">
+                            <div class="image-delete" onclick="deleteImage('rewardQrcode')">×</div>
+                            <p class="text-sm text-center mt-1">打赏二维码</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 作品介绍编辑 -->
+            <div id="introPage" class="p-6 hidden">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-semibold mb-4">编辑作品介绍</h3>
+                    <form id="introForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">作品介绍内容</label>
+                            <textarea class="form-input h-60" id="introEditor" required>《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。</textarea>
+                        </div>
+                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
+                            保存作品介绍
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- 作者介绍编辑 -->
+            <div id="authorPage" class="p-6 hidden">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-semibold mb-4">编辑作者介绍</h3>
+                    <form id="authorForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">作者介绍内容（支持HTML）</label>
+                            <textarea class="form-input h-60" id="authorEditor" required><img src="https://picsum.photos/id/1005/200/200" alt="作者头像" class="w-32 h-32 rounded-full object-cover border-4 border-light">
+<div class="text-gray-700">
+    <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
+    <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
+</div></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
+                            保存作者介绍
+                        </button>
+                    </form>
                 </div>
             </div>
 
@@ -175,8 +254,6 @@
                     </table>
                 </div>
             </div>
-
-            <!-- 其他页面（图片/作品/作者介绍管理）省略，保持核心功能 -->
         </div>
     </div>
 
@@ -201,26 +278,16 @@
     </div>
 
     <script>
-        // 返回前台（三重保障）
+        // 返回前台（强制绝对路径）
         function goToHome() {
-            window.location.href = 'index.html';
-            setTimeout(() => {
-                if (!window.location.href.includes('index.html')) {
-                    window.location.assign('https://whtbob.github.io/index.html');
-                }
-            }, 300);
-            setTimeout(() => {
-                if (!window.location.href.includes('whtbob.github.io')) {
-                    top.location.href = 'https://whtbob.github.io';
-                }
-            }, 600);
+            window.location.href = 'https://whtbob.github.io';
         }
 
         // 退出登录
         function logout() {
             if (confirm('确定要退出登录吗？')) {
                 localStorage.removeItem('isLoggedIn');
-                window.location.href = 'login.html';
+                window.location.href = 'https://whtbob.github.io/login.html';
             }
         }
 
@@ -238,8 +305,113 @@
                 if (targetId === 'comments') {
                     loadAdminComments();
                     loadCommentStatus();
+                } else if (targetId === 'intro') {
+                    // 加载作品介绍到编辑器
+                    const savedIntro = localStorage.getItem('introContent');
+                    if (savedIntro) {
+                        document.getElementById('introEditor').value = savedIntro;
+                    }
+                } else if (targetId === 'author') {
+                    // 加载作者介绍到编辑器
+                    const savedAuthor = localStorage.getItem('authorContent');
+                    if (savedAuthor) {
+                        document.getElementById('authorEditor').value = savedAuthor;
+                    }
+                } else if (targetId === 'images') {
+                    // 加载图片预览
+                    loadImagePreviews();
                 }
             });
+        });
+
+        // 图片管理功能
+        const uploadArea = document.getElementById('imageUploadArea');
+        const fileInput = document.getElementById('imageFile');
+        const saveBtn = document.getElementById('saveImage');
+        let selectedImage = null;
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('border-primary');
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('border-primary');
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('border-primary');
+            if (e.dataTransfer.files[0]) {
+                selectedImage = e.dataTransfer.files[0];
+                saveBtn.disabled = false;
+                alert('图片已选中，点击"保存图片"即可上传');
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                selectedImage = file;
+                saveBtn.disabled = false;
+                alert('图片已选中，点击"保存图片"即可上传');
+            }
+        });
+
+        saveBtn.addEventListener('click', () => {
+            if (selectedImage) {
+                const reader = new FileReader();
+                const imageType = document.getElementById('imageType').value;
+                reader.onload = (event) => {
+                    localStorage.setItem(imageType, event.target.result);
+                    alert('图片保存成功！前台已更新');
+                    document.getElementById(`preview-${imageType}`).src = event.target.result;
+                    saveBtn.disabled = true;
+                };
+                reader.readAsDataURL(selectedImage);
+            }
+        });
+
+        function loadImagePreviews() {
+            // 加载首页图片预览
+            if (localStorage.getItem('homeImage')) {
+                document.getElementById('preview-homeImage').src = localStorage.getItem('homeImage');
+            }
+            // 加载打赏二维码预览
+            if (localStorage.getItem('rewardQrcode')) {
+                document.getElementById('preview-rewardQrcode').src = localStorage.getItem('rewardQrcode');
+            }
+        }
+
+        function deleteImage(type) {
+            if (confirm('确定要恢复默认图片吗？')) {
+                let defaultSrc = 'https://picsum.photos/id/1036/150/100';
+                if (type === 'rewardQrcode') {
+                    defaultSrc = 'https://picsum.photos/id/1060/150/150';
+                }
+                localStorage.setItem(type, defaultSrc);
+                document.getElementById(`preview-${type}`).src = defaultSrc;
+                alert('图片已恢复默认');
+            }
+        }
+
+        // 作品/作者介绍保存
+        document.getElementById('introForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            localStorage.setItem('introContent', document.getElementById('introEditor').value);
+            alert('作品介绍已更新，前台刷新可见');
+        });
+
+        document.getElementById('authorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            localStorage.setItem('authorContent', document.getElementById('authorEditor').value);
+            alert('作者介绍已更新，前台刷新可见');
+        });
+
+        // 章节管理
+        document.getElementById('addChapterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('章节保存成功（完整功能需配合数据库，当前为演示）');
+            this.reset();
         });
 
         // 评论管理功能
@@ -292,7 +464,7 @@
                 localStorage.setItem('comments', JSON.stringify(comments));
                 loadAdminComments();
                 document.getElementById('replyModal').classList.add('hidden');
-                alert('回复成功！');
+                alert('回复成功！前台可见');
             }
         });
 
@@ -311,7 +483,7 @@
             radio.addEventListener('change', function() {
                 const isEnabled = this.value === 'enabled';
                 localStorage.setItem('commentsEnabled', isEnabled);
-                alert(isEnabled ? '评论功能已开启' : '评论功能已关闭');
+                alert(isEnabled ? '评论功能已开启' : '评论功能已关闭，前台无法提交');
             });
         });
 
