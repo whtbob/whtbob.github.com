@@ -172,7 +172,6 @@
         const dbVersion = 1;
         let db;
 
-        // 修复：确保数据库正确初始化
         async function initDB() {
             return new Promise((resolve, reject) => {
                 const request = indexedDB.open(dbName, dbVersion);
@@ -189,10 +188,7 @@
                     resolve(db);
                 };
                 
-                request.onerror = (e) => {
-                    console.error('数据库打开失败:', e.target.error);
-                    reject(e.target.error);
-                };
+                request.onerror = (e) => reject(e.target.error);
             });
         }
 
@@ -207,7 +203,6 @@
                 document.getElementById(targetId + 'Page').classList.remove('hidden');
                 document.getElementById('pageTitle').textContent = this.textContent.trim();
 
-                // 加载对应页面数据
                 if (targetId === 'chapters') loadAdminChapters();
                 if (targetId === 'intro') loadIntroEditor();
                 if (targetId === 'author') loadAuthorEditor();
@@ -215,7 +210,7 @@
             });
         });
 
-        // 章节管理 - 修复加载逻辑
+        // 章节管理
         async function loadAdminChapters() {
             try {
                 await initDB();
@@ -246,18 +241,12 @@
                         `;
                     });
                 };
-
-                request.onerror = (e) => {
-                    console.error('加载章节失败:', e.target.error);
-                    alert('加载章节失败，请刷新页面重试');
-                };
             } catch (error) {
-                console.error('加载章节时出错:', error);
-                alert('加载章节失败，请刷新页面重试');
+                alert('加载章节失败，请刷新页面');
             }
         }
 
-        // 添加章节 - 修复存储逻辑
+        // 添加章节
         document.getElementById('addChapterForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             try {
@@ -265,31 +254,22 @@
                 const transaction = db.transaction('chapters', 'readwrite');
                 const store = transaction.objectStore('chapters');
                 
-                const newChapter = {
+                store.add({
                     title: document.getElementById('chapterTitle').value,
-                    content: document.getElementById('chapterContent').value,
-                    createdAt: new Date().toISOString()
-                };
+                    content: document.getElementById('chapterContent').value
+                });
                 
-                const request = store.add(newChapter);
-                
-                request.onsuccess = () => {
+                transaction.oncomplete = () => {
                     alert('章节添加成功');
                     this.reset();
-                    loadAdminChapters(); // 重新加载章节列表
-                };
-                
-                request.onerror = (e) => {
-                    console.error('添加章节失败:', e.target.error);
-                    alert('添加章节失败，请重试');
+                    loadAdminChapters();
                 };
             } catch (error) {
-                console.error('添加章节时出错:', error);
-                alert('添加章节失败，请重试');
+                alert('添加失败，请重试');
             }
         });
 
-        // 编辑章节 - 新增完整实现
+        // 编辑章节
         async function editChapter(id) {
             try {
                 await initDB();
@@ -304,18 +284,10 @@
                         document.getElementById('editChapterTitle').value = chapter.title;
                         document.getElementById('editChapterContent').value = chapter.content;
                         document.getElementById('editModal').classList.remove('hidden');
-                    } else {
-                        alert('未找到该章节');
                     }
                 };
-                
-                request.onerror = (e) => {
-                    console.error('获取章节失败:', e.target.error);
-                    alert('获取章节失败，请重试');
-                };
             } catch (error) {
-                console.error('编辑章节时出错:', error);
-                alert('编辑章节失败，请重试');
+                alert('加载章节失败');
             }
         }
 
@@ -339,53 +311,36 @@
                     if (chapter) {
                         chapter.title = document.getElementById('editChapterTitle').value;
                         chapter.content = document.getElementById('editChapterContent').value;
-                        chapter.updatedAt = new Date().toISOString();
-                        
-                        const updateRequest = store.put(chapter);
-                        updateRequest.onsuccess = () => {
-                            closeEditModal();
-                            alert('章节更新成功');
-                            loadAdminChapters(); // 重新加载章节列表
-                        };
-                        
-                        updateRequest.onerror = (e) => {
-                            console.error('更新章节失败:', e.target.error);
-                            alert('更新章节失败，请重试');
-                        };
+                        store.put(chapter);
+                        closeEditModal();
+                        alert('更新成功');
+                        loadAdminChapters();
                     }
                 };
             } catch (error) {
-                console.error('保存编辑时出错:', error);
-                alert('保存章节失败，请重试');
+                alert('更新失败');
             }
         });
 
-        // 删除章节 - 修复删除逻辑
+        // 删除章节
         async function deleteChapter(id) {
-            if (confirm('确定要删除该章节吗？此操作不可恢复')) {
+            if (confirm('确定删除？')) {
                 try {
                     await initDB();
                     const transaction = db.transaction('chapters', 'readwrite');
                     const store = transaction.objectStore('chapters');
-                    const request = store.delete(id);
-                    
-                    request.onsuccess = () => {
-                        alert('章节已删除');
-                        loadAdminChapters(); // 重新加载章节列表
-                    };
-                    
-                    request.onerror = (e) => {
-                        console.error('删除章节失败:', e.target.error);
-                        alert('删除章节失败，请重试');
+                    store.delete(id);
+                    transaction.oncomplete = () => {
+                        alert('删除成功');
+                        loadAdminChapters();
                     };
                 } catch (error) {
-                    console.error('删除章节时出错:', error);
-                    alert('删除章节失败，请重试');
+                    alert('删除失败');
                 }
             }
         }
 
-        // 图片上传 - 修复格式限制问题
+        // 图片上传（支持所有图片格式）
         async function uploadImage(type) {
             const fileInput = type === 'homeImage' ? 
                 document.getElementById('homeImageUpload') : 
@@ -396,11 +351,10 @@
                 return;
             }
 
-            // 修复：允许所有图片格式（jpeg、jpg、png等）
             const file = fileInput.files[0];
             const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
             if (!validTypes.includes(file.type)) {
-                alert('请上传JPG、PNG或GIF格式的图片');
+                alert('请上传JPG、PNG或GIF格式');
                 return;
             }
 
@@ -408,7 +362,6 @@
             formData.append('image', file);
             
             try {
-                // 使用imgbb的免费API（支持多种图片格式）
                 const response = await fetch('https://api.imgbb.com/1/upload?key=5340e4e5c571e5f77d469174f9a610c', {
                     method: 'POST',
                     body: formData
@@ -416,37 +369,31 @@
                 
                 const result = await response.json();
                 if (result.success) {
-                    // 保存图片链接
                     if (type === 'homeImage') {
                         localStorage.setItem('homeImage', result.data.url);
                         document.getElementById('homeImagePreview').src = result.data.url;
                     } else {
-                        // 更新作者头像
                         let authorContent = localStorage.getItem('authorContent') || `
-                            <img src="https://i.ibb.co/ZYDt3bD/default-author.jpg" alt="作者头像" class="w-32 h-32 rounded-full object-cover border-4 border-light">
+                            <img src="https://i.ibb.co/ZYDt3bD/default-author.jpg" class="w-32 h-32 rounded-full border-4 border-light">
                             <div class="text-gray-700">
                                 <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
-                                <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
+                                <p>自由撰稿人，曾徒步穿越中国三大沙漠</p>
                             </div>
                         `;
                         authorContent = authorContent.replace(/src="[^"]+"/, `src="${result.data.url}"`);
                         localStorage.setItem('authorContent', authorContent);
                         document.getElementById('authorImagePreview').src = result.data.url;
                     }
-                    alert('图片上传成功');
-                } else {
-                    alert('上传失败: ' + (result.error?.message || '未知错误'));
+                    alert('上传成功');
                 }
             } catch (error) {
-                alert('上传失败，请重试');
-                console.error(error);
+                alert('上传失败');
             }
         }
 
-        // 作品介绍编辑
+        // 作品/作者介绍管理
         function loadIntroEditor() {
-            const savedIntro = localStorage.getItem('introContent') || 
-                '《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。';
+            const savedIntro = localStorage.getItem('introContent') || '《途·寻》讲述了主角王磊穿越沙漠的冒险故事...';
             document.getElementById('introEditor').value = savedIntro;
         }
 
@@ -455,13 +402,12 @@
             alert('保存成功');
         }
 
-        // 作者介绍编辑
         function loadAuthorEditor() {
             const savedAuthor = localStorage.getItem('authorContent') || `
-                <img src="https://i.ibb.co/ZYDt3bD/default-author.jpg" alt="作者头像" class="w-32 h-32 rounded-full object-cover border-4 border-light">
+                <img src="https://i.ibb.co/ZYDt3bD/default-author.jpg" class="w-32 h-32 rounded-full border-4 border-light">
                 <div class="text-gray-700">
                     <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
-                    <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
+                    <p>自由撰稿人，曾徒步穿越中国三大沙漠</p>
                 </div>
             `;
             document.getElementById('authorEditor').value = savedAuthor;
@@ -477,7 +423,6 @@
             if (localStorage.getItem('homeImage')) {
                 document.getElementById('homeImagePreview').src = localStorage.getItem('homeImage');
             }
-            // 提取作者头像URL
             const authorContent = localStorage.getItem('authorContent') || '';
             const imgMatch = authorContent.match(/src="([^"]+)"/);
             if (imgMatch && imgMatch[1]) {
