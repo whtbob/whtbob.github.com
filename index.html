@@ -25,6 +25,7 @@
         .read-area { line-height: 1.8; }
         .reward-qrcode { max-width: 200px; max-height: 200px; }
         .comment-item { border-bottom: 1px solid #eee; padding: 10px 0; }
+        .author-reply { margin-left: 20px; padding: 10px; background-color: #FFF8E7; border-radius: 4px; }
     </style>
 </head>
 <body class="bg-gray-50 font-serif text-gray-800">
@@ -83,24 +84,6 @@
             <h2 class="text-2xl font-bold text-center text-primary mb-10">作品介绍</h2>
             <div class="max-w-3xl mx-auto" id="introContent">
                 <p class="mb-4 text-gray-700">《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。</p>
-                <p class="mb-4 text-gray-700">小说融合了真实的沙漠地理风貌与奇幻的魔法元素，既有惊心动魄的探险情节，也有温暖治愈的亲情描写，适合所有喜欢冒险与成长主题的读者。</p>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-                    <div class="bg-light p-6 rounded-lg shadow-sm">
-                        <i class="fa fa-compass text-3xl text-primary mb-4"></i>
-                        <h3 class="font-bold text-lg mb-2">沙漠探险</h3>
-                        <p class="text-gray-600">穿越塔克拉玛干沙漠，遭遇沙暴、海市蜃楼等挑战</p>
-                    </div>
-                    <div class="bg-light p-6 rounded-lg shadow-sm">
-                        <i class="fa fa-heart text-3xl text-primary mb-4"></i>
-                        <h3 class="font-bold text-lg mb-2">父子情深</h3>
-                        <p class="text-gray-600">从误解到理解，在寻找中重建父子间的情感联结</p>
-                    </div>
-                    <div class="bg-light p-6 rounded-lg shadow-sm">
-                        <i class="fa fa-magic text-3xl text-primary mb-4"></i>
-                        <h3 class="font-bold text-lg mb-2">魔法元素</h3>
-                        <p class="text-gray-600">神秘手帐解锁自然魔法，与沙漠精灵达成契约</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -114,8 +97,6 @@
                 <div class="text-gray-700">
                     <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
                     <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
-                    <p class="mb-3">《途·寻》是其首部长篇小说，灵感来源于真实的沙漠探险经历，希望通过故事传递“探索与成长”的力量。</p>
-                    <p>其他作品：《胡杨树下的约定》《沙海独行》等短篇故事。</p>
                 </div>
             </div>
         </div>
@@ -136,9 +117,6 @@
                         <div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent" onclick="showChapter(2)">
                             第二章：神秘的手帐
                         </div>
-                        <div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent" onclick="showChapter(3)">
-                            第三章：父子同行
-                        </div>
                     </div>
                 </div>
                 <!-- 阅读内容区 -->
@@ -146,19 +124,13 @@
                     <!-- 第一章内容 -->
                     <div id="chapter1">
                         <h3 class="text-xl font-bold mb-6 text-primary">第一章：沙漠的召唤</h3>
-                        <p class="mb-4 text-gray-700">烈日炙烤着无垠的沙漠，金黄的沙粒在阳光下闪烁着刺眼的光芒。王磊站在沙丘顶端，眯着眼睛眺望远方，汗水顺着他的脸颊滑落，在下巴处汇聚成滴，然后滴落在滚烫的沙地上，瞬间蒸发无踪。</p>
+                        <p class="mb-4 text-gray-700">烈日炙烤着无垠的沙漠，金黄的沙粒在阳光下闪烁着刺眼的光芒。</p>
                     </div>
 
                     <!-- 第二章内容 -->
                     <div id="chapter2" class="hidden">
                         <h3 class="text-xl font-bold mb-6 text-primary">第二章：神秘的手帐</h3>
-                        <p class="mb-4 text-gray-700">王磊靠在胡杨树下休息，指尖摩挲着树干上的奇怪符号。他再次翻开父亲的笔记本，试图从那些潦草的字迹中找到线索。</p>
-                    </div>
-
-                    <!-- 第三章内容 -->
-                    <div id="chapter3" class="hidden">
-                        <h3 class="text-xl font-bold mb-6 text-primary">第三章：父子同行</h3>
-                        <p class="mb-4 text-gray-700">回忆像潮水般涌来。王磊想起小时候，父亲总在睡前给他讲沙漠的故事，说那里的星星比城市里亮一百倍。</p>
+                        <p class="mb-4 text-gray-700">王磊靠在胡杨树下休息，指尖摩挲着树干上的奇怪符号。</p>
                     </div>
 
                     <div class="flex justify-between mt-10">
@@ -174,13 +146,18 @@
         </div>
     </section>
 
-    <!-- 评论板块（新增） -->
+    <!-- 评论板块 -->
     <section id="comments" class="py-12 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl font-bold text-center text-primary mb-10">读者评论</h2>
             <div class="max-w-4xl mx-auto">
-                <!-- 评论输入框 -->
-                <div class="bg-light p-6 rounded-lg shadow-sm mb-8">
+                <!-- 评论状态提示（如果关闭） -->
+                <div id="commentClosedTip" class="bg-red-100 text-red-700 p-4 rounded-lg mb-6 hidden">
+                    <i class="fa fa-info-circle mr-2"></i> 评论功能已暂时关闭，感谢理解
+                </div>
+
+                <!-- 评论输入框（根据状态显示/隐藏） -->
+                <div class="bg-light p-6 rounded-lg shadow-sm mb-8" id="commentInputArea">
                     <h3 class="text-lg font-semibold mb-4">发表评论</h3>
                     <form id="commentForm">
                         <div class="mb-4">
@@ -199,20 +176,7 @@
 
                 <!-- 评论列表 -->
                 <div id="commentList">
-                    <div class="comment-item">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-bold text-primary">沙漠旅行者</h4>
-                            <span class="text-gray-500 text-sm">2025-11-12</span>
-                        </div>
-                        <p class="mt-2 text-gray-700">第一章太精彩了，沙漠的描写让人身临其境，期待王磊能找到父亲！</p>
-                    </div>
-                    <div class="comment-item">
-                        <div class="flex justify-between items-start">
-                            <h4 class="font-bold text-primary">风吹沙</h4>
-                            <span class="text-gray-500 text-sm">2025-11-12</span>
-                        </div>
-                        <p class="mt-2 text-gray-700">父亲留下的手帐肯定有秘密，感觉后面会有反转！</p>
-                    </div>
+                    <!-- 评论会从本地存储加载 -->
                 </div>
             </div>
         </div>
@@ -222,7 +186,6 @@
     <section id="reward" class="py-12 bg-light">
         <div class="container mx-auto px-4 text-center">
             <h2 class="text-2xl font-bold text-primary mb-6">支持作者</h2>
-            <p class="text-gray-700 mb-8 max-w-2xl mx-auto">您的每一份支持，都是作者创作的动力。可以通过微信扫码打赏，金额随意，感谢您的喜爱！</p>
             <button id="openRewardModal" class="bg-primary text-white px-8 py-3 rounded-md hover:bg-dark transition-colors text-lg">
                 微信扫码打赏 <i class="fa fa-qrcode ml-2"></i>
             </button>
@@ -233,7 +196,6 @@
     <footer class="bg-dark text-white py-6">
         <div class="container mx-auto px-4 text-center">
             <p>《途·寻》小说平台 &copy; 2025 版权所有</p>
-            <p class="text-gray-400 text-sm mt-2">联系作者：tuxun@example.com</p>
         </div>
     </footer>
 
@@ -247,8 +209,6 @@
                 </button>
             </div>
             <img src="https://picsum.photos/id/1060/200/200" alt="微信赞赏码" class="reward-qrcode mx-auto border-2 border-light rounded-md mb-4" id="rewardQrcode">
-            <p class="text-gray-600 text-center mb-2">用微信扫描二维码</p>
-            <p class="text-gray-500 text-sm text-center">打赏金额随意，感谢支持！</p>
         </div>
     </div>
 
@@ -261,7 +221,7 @@
 
         // 章节切换功能
         let currentChapter = 1;
-        const totalChapters = 3;
+        const totalChapters = 2;
 
         function showChapter(num) {
             document.querySelectorAll('[id^="chapter"]').forEach(chapter => chapter.classList.add('hidden'));
@@ -305,6 +265,7 @@
                     <span class="text-gray-500 text-sm">${date}</span>
                 </div>
                 <p class="mt-2 text-gray-700">${content}</p>
+                <div class="author-reply-area mt-3"></div> <!-- 作者回复区域 -->
             `;
             
             // 添加到列表
@@ -320,10 +281,19 @@
         function saveComments() {
             const comments = [];
             document.querySelectorAll('.comment-item').forEach(item => {
+                // 获取作者回复（如果有）
+                const replyEl = item.querySelector('.author-reply');
+                const reply = replyEl ? {
+                    content: replyEl.querySelector('p').textContent,
+                    date: replyEl.querySelector('span').textContent
+                } : null;
+
                 comments.push({
+                    id: Date.now() + Math.random().toString(36).substr(2, 5), // 唯一ID
                     name: item.querySelector('h4').textContent,
                     date: item.querySelector('span').textContent,
-                    content: item.querySelector('p').textContent
+                    content: item.querySelector('p').textContent,
+                    reply: reply
                 });
             });
             localStorage.setItem('comments', JSON.stringify(comments));
@@ -333,45 +303,53 @@
         function loadComments() {
             const comments = JSON.parse(localStorage.getItem('comments') || '[]');
             const commentList = document.getElementById('commentList');
-            commentList.innerHTML = ''; // 清空现有评论
+            commentList.innerHTML = '';
+            
+            // 检查评论是否关闭
+            const commentsEnabled = localStorage.getItem('commentsEnabled') !== 'false';
+            document.getElementById('commentInputArea').classList.toggle('hidden', !commentsEnabled);
+            document.getElementById('commentClosedTip').classList.toggle('hidden', commentsEnabled);
+
             comments.forEach(comment => {
                 const commentItem = document.createElement('div');
                 commentItem.className = 'comment-item';
+                commentItem.setAttribute('data-id', comment.id);
+                
+                // 作者回复HTML
+                const replyHtml = comment.reply ? `
+                    <div class="author-reply mt-3">
+                        <div class="flex justify-between items-start">
+                            <h5 class="font-bold text-dark">作者回复</h5>
+                            <span class="text-gray-500 text-sm">${comment.reply.date}</span>
+                        </div>
+                        <p class="mt-1 text-gray-700">${comment.reply.content}</p>
+                    </div>
+                ` : '';
+                
                 commentItem.innerHTML = `
                     <div class="flex justify-between items-start">
                         <h4 class="font-bold text-primary">${comment.name}</h4>
                         <span class="text-gray-500 text-sm">${comment.date}</span>
                     </div>
                     <p class="mt-2 text-gray-700">${comment.content}</p>
+                    <div class="author-reply-area mt-3">${replyHtml}</div>
                 `;
                 commentList.appendChild(commentItem);
             });
         }
 
-        // 平滑滚动
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
-                document.getElementById('mobileMenu').classList.add('hidden');
-            });
-        });
-
         // 页面加载时执行
         window.onload = function() {
-            // 加载作品介绍
+            // 加载各种内容
             if (localStorage.getItem('introContent')) {
                 document.getElementById('introContent').innerHTML = localStorage.getItem('introContent');
             }
-            // 加载作者介绍
             if (localStorage.getItem('authorContent')) {
                 document.getElementById('authorContent').innerHTML = localStorage.getItem('authorContent');
             }
-            // 加载首页图片
             if (localStorage.getItem('homeImage')) {
                 document.getElementById('homeImage').src = localStorage.getItem('homeImage');
             }
-            // 加载打赏二维码
             if (localStorage.getItem('rewardQrcode')) {
                 document.getElementById('rewardQrcode').src = localStorage.getItem('rewardQrcode');
             }

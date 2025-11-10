@@ -56,9 +56,12 @@
                 <a href="#comments" class="sidebar-link block p-3 rounded mb-1 flex items-center">
                     <i class="fa fa-comments w-6"></i> 评论管理
                 </a>
-                <!-- 修复返回前台链接 -->
-                <a href="https://whtbob.github.io" target="_self" class="sidebar-link block p-3 rounded mb-1 flex items-center mt-6 bg-white text-primary font-medium">
-                    <i class="fa fa-home w-6"></i> 返回前台首页
+                <!-- 终极解决方案：添加两个返回按钮，确保兼容 -->
+                <a href="index.html" class="sidebar-link block p-3 rounded mb-1 flex items-center mt-6 bg-white text-primary font-medium">
+                    <i class="fa fa-home w-6"></i> 返回前台（方式1）
+                </a>
+                <a href="https://whtbob.github.io" target="_top" class="sidebar-link block p-3 rounded mb-1 flex items-center bg-primary text-white font-medium">
+                    <i class="fa fa-external-link w-6"></i> 返回前台（方式2）
                 </a>
             </div>
         </div>
@@ -83,11 +86,11 @@
                         <div class="text-gray-600">总访问量</div>
                     </div>
                     <div class="bg-white rounded-lg shadow p-6 text-center">
-                        <div class="text-4xl font-bold text-primary mb-2">3</div>
+                        <div class="text-4xl font-bold text-primary mb-2">2</div>
                         <div class="text-gray-600">已发布章节</div>
                     </div>
                     <div class="bg-white rounded-lg shadow p-6 text-center">
-                        <div class="text-4xl font-bold text-primary mb-2" id="commentCount">2</div>
+                        <div class="text-4xl font-bold text-primary mb-2" id="commentCount">0</div>
                         <div class="text-gray-600">读者评论</div>
                     </div>
                 </div>
@@ -100,7 +103,7 @@
                     <form id="addChapterForm">
                         <div class="mb-4">
                             <label class="block text-gray-700 mb-2">章节标题</label>
-                            <input type="text" class="form-input" placeholder="例如：第六章：沙漠古城" required>
+                            <input type="text" class="form-input" placeholder="例如：第三章：沙漠古城" required>
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 mb-2">章节内容</label>
@@ -158,16 +161,6 @@
                             <div class="image-delete" onclick="deleteImage('homeImage')">×</div>
                             <p class="text-sm text-center mt-1">首页主图</p>
                         </div>
-                        <div class="image-item">
-                            <img src="https://picsum.photos/id/1060/150/150" alt="打赏二维码" class="w-32 h-32 object-cover rounded border">
-                            <div class="image-delete" onclick="deleteImage('rewardQrcode')">×</div>
-                            <p class="text-sm text-center mt-1">打赏二维码</p>
-                        </div>
-                        <div class="image-item">
-                            <img src="https://picsum.photos/id/1005/150/150" alt="作者头像" class="w-32 h-32 object-cover rounded border">
-                            <div class="image-delete" onclick="deleteImage('authorAvatar')">×</div>
-                            <p class="text-sm text-center mt-1">作者头像</p>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -179,27 +172,7 @@
                     <form id="introForm">
                         <div class="mb-4">
                             <label class="block text-gray-700 mb-2">作品介绍内容</label>
-                            <textarea class="form-input h-60" id="introEditor" required>《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。
-
-小说融合了真实的沙漠地理风貌与奇幻的魔法元素，既有惊心动魄的探险情节，也有温暖治愈的亲情描写，适合所有喜欢冒险与成长主题的读者。
-
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-    <div class="bg-light p-6 rounded-lg shadow-sm">
-        <i class="fa fa-compass text-3xl text-primary mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">沙漠探险</h3>
-        <p class="text-gray-600">穿越塔克拉玛干沙漠，遭遇沙暴、海市蜃楼等挑战</p>
-    </div>
-    <div class="bg-light p-6 rounded-lg shadow-sm">
-        <i class="fa fa-heart text-3xl text-primary mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">父子情深</h3>
-        <p class="text-gray-600">从误解到理解，在寻找中重建父子间的情感联结</p>
-    </div>
-    <div class="bg-light p-6 rounded-lg shadow-sm">
-        <i class="fa fa-magic text-3xl text-primary mb-4"></i>
-        <h3 class="font-bold text-lg mb-2">魔法元素</h3>
-        <p class="text-gray-600">神秘手帐解锁自然魔法，与沙漠精灵达成契约</p>
-    </div>
-</div></textarea>
+                            <textarea class="form-input h-60" id="introEditor" required>《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。</textarea>
                         </div>
                         <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
                             保存作品介绍
@@ -219,8 +192,6 @@
 <div class="text-gray-700">
     <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
     <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
-    <p class="mb-3">《途·寻》是其首部长篇小说，灵感来源于真实的沙漠探险经历，希望通过故事传递“探索与成长”的力量。</p>
-    <p>其他作品：《胡杨树下的约定》《沙海独行》等短篇故事。</p>
 </div></textarea>
                         </div>
                         <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
@@ -230,8 +201,23 @@
                 </div>
             </div>
 
-            <!-- 评论管理页面（完善） -->
+            <!-- 评论管理页面（强化版） -->
             <div id="commentsPage" class="p-6 hidden">
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <h3 class="text-lg font-semibold mb-4">评论设置</h3>
+                    <div class="flex items-center">
+                        <label class="mr-4 text-gray-700">评论功能：</label>
+                        <label class="inline-flex items-center">
+                            <input type="radio" name="commentStatus" value="enabled" class="form-radio text-primary" checked>
+                            <span class="ml-2">开启</span>
+                        </label>
+                        <label class="inline-flex items-center ml-6">
+                            <input type="radio" name="commentStatus" value="disabled" class="form-radio text-primary">
+                            <span class="ml-2">关闭（防止网络暴力）</span>
+                        </label>
+                    </div>
+                </div>
+
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold mb-4">读者评论管理</h3>
                     <table class="min-w-full">
@@ -240,7 +226,6 @@
                                 <th class="py-3 text-left text-gray-700">序号</th>
                                 <th class="py-3 text-left text-gray-700">读者昵称</th>
                                 <th class="py-3 text-left text-gray-700">评论内容</th>
-                                <th class="py-3 text-left text-gray-700">时间</th>
                                 <th class="py-3 text-left text-gray-700">操作</th>
                             </tr>
                         </thead>
@@ -250,6 +235,26 @@
                     </table>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- 回复评论弹窗 -->
+    <div id="replyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-xl font-bold text-primary">回复评论</h3>
+                <button id="closeReplyModal" class="text-gray-500 hover:text-gray-700">
+                    <i class="fa fa-times text-xl"></i>
+                </button>
+            </div>
+            <input type="hidden" id="replyCommentId"> <!-- 存储要回复的评论ID -->
+            <div class="mb-4">
+                <label class="block text-gray-700 mb-2">回复内容</label>
+                <textarea class="form-input h-32" id="replyContent" placeholder="输入您的回复..."></textarea>
+            </div>
+            <button id="saveReplyBtn" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
+                发送回复
+            </button>
         </div>
     </div>
 
@@ -265,12 +270,98 @@
                 document.getElementById(targetId + 'Page').classList.remove('hidden');
                 document.getElementById('pageTitle').textContent = this.textContent.trim();
                 
-                // 如果切换到评论管理页，加载评论
+                // 加载评论管理
                 if (targetId === 'comments') {
                     loadAdminComments();
+                    loadCommentStatus();
                 }
             });
         });
+
+        // 评论状态管理（开启/关闭）
+        document.querySelectorAll('input[name="commentStatus"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                const isEnabled = this.value === 'enabled';
+                localStorage.setItem('commentsEnabled', isEnabled);
+                alert(isEnabled ? '评论功能已开启' : '评论功能已关闭，前台将无法提交评论');
+            });
+        });
+
+        // 加载评论状态
+        function loadCommentStatus() {
+            const isEnabled = localStorage.getItem('commentsEnabled') !== 'false';
+            document.querySelector(`input[name="commentStatus"][value="${isEnabled ? 'enabled' : 'disabled'}"]`).checked = true;
+        }
+
+        // 评论管理功能
+        function loadAdminComments() {
+            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+            const commentList = document.getElementById('adminCommentList');
+            commentList.innerHTML = '';
+            
+            comments.forEach((comment, index) => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-gray-200';
+                tr.innerHTML = `
+                    <td class="py-3">${index + 1}</td>
+                    <td class="py-3">${comment.name}</td>
+                    <td class="py-3">${comment.content}</td>
+                    <td class="py-3">
+                        <button class="text-blue-500 hover:text-blue-700 mr-3" onclick="openReplyModal('${comment.id}')">回复</button>
+                        <button class="text-red-500 hover:text-red-700" onclick="deleteComment(${index})">删除</button>
+                    </td>
+                `;
+                commentList.appendChild(tr);
+            });
+            
+            // 更新仪表盘评论数
+            document.getElementById('commentCount').textContent = comments.length;
+        }
+
+        // 回复评论相关
+        function openReplyModal(commentId) {
+            document.getElementById('replyCommentId').value = commentId;
+            document.getElementById('replyContent').value = '';
+            document.getElementById('replyModal').classList.remove('hidden');
+        }
+
+        document.getElementById('closeReplyModal').addEventListener('click', () => {
+            document.getElementById('replyModal').classList.add('hidden');
+        });
+
+        document.getElementById('saveReplyBtn').addEventListener('click', () => {
+            const commentId = document.getElementById('replyCommentId').value;
+            const replyContent = document.getElementById('replyContent').value;
+            if (!replyContent) {
+                alert('请输入回复内容');
+                return;
+            }
+
+            // 保存回复到评论
+            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+            const commentIndex = comments.findIndex(c => c.id === commentId);
+            if (commentIndex !== -1) {
+                comments[commentIndex].reply = {
+                    content: replyContent,
+                    date: new Date().toLocaleDateString()
+                };
+                localStorage.setItem('comments', JSON.stringify(comments));
+                loadAdminComments(); // 刷新评论列表
+                document.getElementById('replyModal').classList.add('hidden');
+                alert('回复成功！');
+            }
+        });
+
+        // 删除评论
+        function deleteComment(index) {
+            if (confirm('确定要删除这条评论吗？')) {
+                const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+                comments.splice(index, 1);
+                localStorage.setItem('comments', JSON.stringify(comments));
+                loadAdminComments();
+                alert('评论已删除');
+            }
+        }
 
         // 图片上传与管理
         const uploadArea = document.getElementById('imageUploadArea');
@@ -288,26 +379,6 @@
             }
         });
 
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('border-primary', 'bg-light/30');
-        });
-
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('border-primary', 'bg-light/30');
-        });
-
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('border-primary', 'bg-light/30');
-            if (e.dataTransfer.files[0]) {
-                selectedImage = e.dataTransfer.files[0];
-                saveBtn.disabled = false;
-                alert('图片已选中，点击"保存图片"即可上传');
-            }
-        });
-
-        // 保存图片
         saveBtn.addEventListener('click', () => {
             if (selectedImage) {
                 const reader = new FileReader();
@@ -322,98 +393,39 @@
 
         // 删除图片
         function deleteImage(type) {
-            if (confirm('确定要删除这张图片吗？')) {
-                let defaultSrc = '';
-                if (type === 'homeImage') defaultSrc = 'https://picsum.photos/id/1036/600/300';
-                if (type === 'rewardQrcode') defaultSrc = 'https://picsum.photos/id/1060/200/200';
-                if (type === 'authorAvatar') defaultSrc = 'https://picsum.photos/id/1005/200/200';
-                
+            if (confirm('确定要删除吗？')) {
+                let defaultSrc = 'https://picsum.photos/id/1036/600/300';
                 localStorage.setItem(type, defaultSrc);
-                document.querySelector(`#imageList .image-item:nth-child(${['homeImage','rewardQrcode','authorAvatar'].indexOf(type)+1}) img`).src = defaultSrc;
-                alert('图片已删除，已恢复默认图片');
+                document.querySelector('#imageList .image-item img').src = defaultSrc;
+                alert('图片已恢复默认');
             }
         }
 
-        // 保存作品介绍
+        // 保存作品/作者介绍
         document.getElementById('introForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const content = document.getElementById('introEditor').value;
-            localStorage.setItem('introContent', content);
-            alert('作品介绍保存成功！前台已更新');
+            localStorage.setItem('introContent', document.getElementById('introEditor').value);
+            alert('作品介绍已更新');
         });
 
-        // 保存作者介绍
         document.getElementById('authorForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const content = document.getElementById('authorEditor').value;
-            localStorage.setItem('authorContent', content);
-            alert('作者介绍保存成功！前台已更新');
+            localStorage.setItem('authorContent', document.getElementById('authorEditor').value);
+            alert('作者介绍已更新');
         });
 
-        // 章节管理功能
+        // 章节管理
         document.getElementById('addChapterForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('章节保存成功！读者已可以看到新章节');
+            alert('章节保存成功');
             this.reset();
         });
 
-        // 评论管理功能
-        function loadAdminComments() {
-            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-            const commentList = document.getElementById('adminCommentList');
-            commentList.innerHTML = '';
-            
-            comments.forEach((comment, index) => {
-                const tr = document.createElement('tr');
-                tr.className = 'border-b border-gray-200';
-                tr.innerHTML = `
-                    <td class="py-3">${index + 1}</td>
-                    <td class="py-3">${comment.name}</td>
-                    <td class="py-3">${comment.content}</td>
-                    <td class="py-3">${comment.date}</td>
-                    <td class="py-3">
-                        <button class="text-red-500 hover:text-red-700" onclick="deleteComment(${index})">删除</button>
-                    </td>
-                `;
-                commentList.appendChild(tr);
-            });
-            
-            // 更新仪表盘评论数
-            document.getElementById('commentCount').textContent = comments.length;
-        }
-
-        // 删除评论
-        function deleteComment(index) {
-            if (confirm('确定要删除这条评论吗？')) {
-                const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-                comments.splice(index, 1); // 删除对应评论
-                localStorage.setItem('comments', JSON.stringify(comments));
-                loadAdminComments(); // 重新加载评论列表
-                alert('评论已删除');
-            }
-        }
-
-        // 页面加载时更新评论数
+        // 页面加载时初始化
         window.onload = function() {
             const comments = JSON.parse(localStorage.getItem('comments') || '[]');
             document.getElementById('commentCount').textContent = comments.length;
         }
-
-        // 编辑/删除章节功能
-        document.querySelectorAll('button:text-red-500').forEach(btn => {
-            btn.addEventListener('click', function() {
-                if (confirm('确定要删除吗？')) {
-                    this.closest('tr').remove();
-                }
-            });
-        });
-
-        document.querySelectorAll('button:text-blue-500').forEach(btn => {
-            btn.addEventListener('click', function() {
-                const chapterTitle = this.closest('tr').querySelector('td:nth-child(2)').textContent;
-                alert(`即将编辑：${chapterTitle}`);
-            });
-        });
     </script>
 </body>
 </html>
