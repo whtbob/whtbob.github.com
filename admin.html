@@ -56,8 +56,8 @@
                 <a href="#comments" class="sidebar-link block p-3 rounded mb-1 flex items-center">
                     <i class="fa fa-comments w-6"></i> 评论管理
                 </a>
-                <!-- 明显的返回前台按钮 -->
-                <a href="index.html" class="sidebar-link block p-3 rounded mb-1 flex items-center mt-6 bg-white text-primary font-medium">
+                <!-- 修复返回前台链接 -->
+                <a href="https://whtbob.github.io" target="_self" class="sidebar-link block p-3 rounded mb-1 flex items-center mt-6 bg-white text-primary font-medium">
                     <i class="fa fa-home w-6"></i> 返回前台首页
                 </a>
             </div>
@@ -87,7 +87,7 @@
                         <div class="text-gray-600">已发布章节</div>
                     </div>
                     <div class="bg-white rounded-lg shadow p-6 text-center">
-                        <div class="text-4xl font-bold text-primary mb-2">24</div>
+                        <div class="text-4xl font-bold text-primary mb-2" id="commentCount">2</div>
                         <div class="text-gray-600">读者评论</div>
                     </div>
                 </div>
@@ -131,20 +131,12 @@
                                     <button class="text-red-500 hover:text-red-700">删除</button>
                                 </td>
                             </tr>
-                            <tr class="border-b border-gray-200">
-                                <td class="py-3">2</td>
-                                <td class="py-3">第二章：神秘的手帐</td>
-                                <td class="py-3">
-                                    <button class="text-blue-500 hover:text-blue-700 mr-3">编辑</button>
-                                    <button class="text-red-500 hover:text-red-700">删除</button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
 
-            <!-- 图片管理页面（支持删除和多图管理） -->
+            <!-- 图片管理页面 -->
             <div id="imagesPage" class="p-6 hidden">
                 <div class="bg-white rounded-lg shadow p-6 mb-8">
                     <h3 class="text-lg font-semibold mb-4">上传图片</h3>
@@ -152,7 +144,6 @@
                         <input type="file" id="imageFile" class="hidden" accept="image/*">
                         <i class="fa fa-cloud-upload text-4xl text-gray-400 mb-3"></i>
                         <p class="text-gray-600">点击或拖拽图片至此处上传</p>
-                        <p class="text-gray-500 text-sm mt-2">支持JPG/PNG格式</p>
                     </div>
                     <button id="saveImage" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors disabled:opacity-50" disabled>
                         保存图片
@@ -162,19 +153,16 @@
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold mb-4">已上传图片（可删除/替换）</h3>
                     <div id="imageList">
-                        <!-- 首页主图 -->
                         <div class="image-item">
                             <img src="https://picsum.photos/id/1036/150/100" alt="首页图片" class="w-32 h-24 object-cover rounded border">
                             <div class="image-delete" onclick="deleteImage('homeImage')">×</div>
                             <p class="text-sm text-center mt-1">首页主图</p>
                         </div>
-                        <!-- 打赏二维码 -->
                         <div class="image-item">
                             <img src="https://picsum.photos/id/1060/150/150" alt="打赏二维码" class="w-32 h-32 object-cover rounded border">
                             <div class="image-delete" onclick="deleteImage('rewardQrcode')">×</div>
                             <p class="text-sm text-center mt-1">打赏二维码</p>
                         </div>
-                        <!-- 作者头像 -->
                         <div class="image-item">
                             <img src="https://picsum.photos/id/1005/150/150" alt="作者头像" class="w-32 h-32 object-cover rounded border">
                             <div class="image-delete" onclick="deleteImage('authorAvatar')">×</div>
@@ -184,7 +172,7 @@
                 </div>
             </div>
 
-            <!-- 作品介绍编辑页面（新增） -->
+            <!-- 作品介绍编辑页面 -->
             <div id="introPage" class="p-6 hidden">
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold mb-4">编辑作品介绍</h3>
@@ -220,7 +208,7 @@
                 </div>
             </div>
 
-            <!-- 作者介绍编辑页面（新增） -->
+            <!-- 作者介绍编辑页面 -->
             <div id="authorPage" class="p-6 hidden">
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold mb-4">编辑作者介绍</h3>
@@ -242,28 +230,22 @@
                 </div>
             </div>
 
-            <!-- 评论管理页面 -->
+            <!-- 评论管理页面（完善） -->
             <div id="commentsPage" class="p-6 hidden">
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold mb-4">读者评论</h3>
+                    <h3 class="text-lg font-semibold mb-4">读者评论管理</h3>
                     <table class="min-w-full">
                         <thead>
                             <tr class="border-b border-gray-200">
                                 <th class="py-3 text-left text-gray-700">序号</th>
                                 <th class="py-3 text-left text-gray-700">读者昵称</th>
                                 <th class="py-3 text-left text-gray-700">评论内容</th>
+                                <th class="py-3 text-left text-gray-700">时间</th>
                                 <th class="py-3 text-left text-gray-700">操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="border-b border-gray-200">
-                                <td class="py-3">1</td>
-                                <td class="py-3">沙漠旅行者</td>
-                                <td class="py-3">第一章太精彩了，期待后续！</td>
-                                <td class="py-3">
-                                    <button class="text-red-500 hover:text-red-700">删除</button>
-                                </td>
-                            </tr>
+                        <tbody id="adminCommentList">
+                            <!-- 评论会从本地存储加载 -->
                         </tbody>
                     </table>
                 </div>
@@ -282,6 +264,11 @@
                 document.querySelectorAll('[id$="Page"]').forEach(page => page.classList.add('hidden'));
                 document.getElementById(targetId + 'Page').classList.remove('hidden');
                 document.getElementById('pageTitle').textContent = this.textContent.trim();
+                
+                // 如果切换到评论管理页，加载评论
+                if (targetId === 'comments') {
+                    loadAdminComments();
+                }
             });
         });
 
@@ -320,15 +307,13 @@
             }
         });
 
-        // 保存图片（更新到前台）
+        // 保存图片
         saveBtn.addEventListener('click', () => {
             if (selectedImage) {
                 const reader = new FileReader();
                 reader.onload = (event) => {
-                    // 这里默认替换首页图片，实际可根据需求选择替换哪个图片
                     localStorage.setItem('homeImage', event.target.result);
                     alert('图片保存成功！前台已更新');
-                    // 刷新图片列表
                     document.querySelector('#imageList .image-item img').src = event.target.result;
                 };
                 reader.readAsDataURL(selectedImage);
@@ -338,7 +323,6 @@
         // 删除图片
         function deleteImage(type) {
             if (confirm('确定要删除这张图片吗？')) {
-                // 恢复默认图片
                 let defaultSrc = '';
                 if (type === 'homeImage') defaultSrc = 'https://picsum.photos/id/1036/600/300';
                 if (type === 'rewardQrcode') defaultSrc = 'https://picsum.photos/id/1060/200/200';
@@ -373,7 +357,49 @@
             this.reset();
         });
 
-        // 删除/编辑按钮功能
+        // 评论管理功能
+        function loadAdminComments() {
+            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+            const commentList = document.getElementById('adminCommentList');
+            commentList.innerHTML = '';
+            
+            comments.forEach((comment, index) => {
+                const tr = document.createElement('tr');
+                tr.className = 'border-b border-gray-200';
+                tr.innerHTML = `
+                    <td class="py-3">${index + 1}</td>
+                    <td class="py-3">${comment.name}</td>
+                    <td class="py-3">${comment.content}</td>
+                    <td class="py-3">${comment.date}</td>
+                    <td class="py-3">
+                        <button class="text-red-500 hover:text-red-700" onclick="deleteComment(${index})">删除</button>
+                    </td>
+                `;
+                commentList.appendChild(tr);
+            });
+            
+            // 更新仪表盘评论数
+            document.getElementById('commentCount').textContent = comments.length;
+        }
+
+        // 删除评论
+        function deleteComment(index) {
+            if (confirm('确定要删除这条评论吗？')) {
+                const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+                comments.splice(index, 1); // 删除对应评论
+                localStorage.setItem('comments', JSON.stringify(comments));
+                loadAdminComments(); // 重新加载评论列表
+                alert('评论已删除');
+            }
+        }
+
+        // 页面加载时更新评论数
+        window.onload = function() {
+            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
+            document.getElementById('commentCount').textContent = comments.length;
+        }
+
+        // 编辑/删除章节功能
         document.querySelectorAll('button:text-red-500').forEach(btn => {
             btn.addEventListener('click', function() {
                 if (confirm('确定要删除吗？')) {
