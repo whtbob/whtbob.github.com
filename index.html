@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>途·寻 - 沙漠探险小说</title>
+    <title>作者后台登录</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
@@ -12,350 +12,74 @@
                 extend: {
                     colors: {
                         primary: '#D2691E',
-                        secondary: '#CD853F',
-                        light: '#FFDEAD',
                         dark: '#8B4513'
                     }
                 }
             }
         }
     </script>
-    <style>
-        .chapter-item:hover { background-color: #FFF8E7; }
-        .read-area { line-height: 1.8; }
-        .reward-qrcode { max-width: 200px; max-height: 200px; }
-        .comment-item { border-bottom: 1px solid #eee; padding: 10px 0; }
-        .author-reply { margin-left: 20px; padding: 10px; background-color: #FFF8E7; border-radius: 4px; }
-    </style>
 </head>
-<body class="bg-gray-50 font-serif text-gray-800">
-    <!-- 导航栏 -->
-    <nav class="bg-primary text-white shadow-md sticky top-0 z-40">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center space-x-2">
-                <i class="fa fa-book text-xl"></i>
-                <span class="text-xl font-bold">途·寻</span>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-8">
+        <div class="text-center mb-8">
+            <i class="fa fa-lock text-4xl text-primary mb-4"></i>
+            <h2 class="text-2xl font-bold text-gray-800">作者后台登录</h2>
+            <p class="text-gray-500 mt-2">请输入密码以访问管理后台</p>
+        </div>
+
+        <form id="loginForm">
+            <div class="mb-6">
+                <label class="block text-gray-700 mb-2">管理员密码</label>
+                <div class="relative">
+                    <input type="password" id="password" class="w-full px-4 py-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary" placeholder="输入密码" required>
+                    <button type="button" id="togglePwd" class="absolute right-3 top-3 text-gray-500">
+                        <i class="fa fa-eye-slash"></i>
+                    </button>
+                </div>
             </div>
-            <div class="hidden md:flex items-center space-x-6">
-                <a href="#home" class="hover:text-light transition-colors">首页</a>
-                <a href="#intro" class="hover:text-light transition-colors">作品介绍</a>
-                <a href="#author" class="hover:text-light transition-colors">作者介绍</a>
-                <a href="#read" class="hover:text-light transition-colors">开始阅读</a>
-                <a href="#comments" class="hover:text-light transition-colors">读者评论</a>
-                <a href="#reward" class="hover:text-light transition-colors">支持作者</a>
-                <a href="admin.html" class="hover:text-light transition-colors">作者后台</a>
-            </div>
-            <button id="menuBtn" class="md:hidden text-white focus:outline-none">
-                <i class="fa fa-bars text-xl"></i>
+            <button type="submit" class="w-full bg-primary text-white py-3 rounded-md hover:bg-dark transition-colors font-medium">
+                登录后台
             </button>
-        </div>
-        <div id="mobileMenu" class="md:hidden hidden bg-primary border-t border-secondary">
-            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
-                <a href="#home" class="block py-2 hover:text-light transition-colors">首页</a>
-                <a href="#intro" class="block py-2 hover:text-light transition-colors">作品介绍</a>
-                <a href="#author" class="block py-2 hover:text-light transition-colors">作者介绍</a>
-                <a href="#read" class="block py-2 hover:text-light transition-colors">开始阅读</a>
-                <a href="#comments" class="block py-2 hover:text-light transition-colors">读者评论</a>
-                <a href="#reward" class="block py-2 hover:text-light transition-colors">支持作者</a>
-                <a href="admin.html" class="block py-2 hover:text-light transition-colors">作者后台</a>
-            </div>
-        </div>
-    </nav>
+        </form>
 
-    <!-- 首页板块 -->
-    <section id="home" class="py-12 bg-light">
-        <div class="container mx-auto px-4 text-center">
-            <div class="max-w-3xl mx-auto">
-                <h1 class="text-3xl md:text-4xl font-bold text-primary mb-6">途·寻</h1>
-                <p class="text-xl text-gray-700 mb-8">沙漠探险 · 父子情 · 魔法元素</p>
-                <div class="mb-10">
-                    <img src="https://picsum.photos/id/1036/600/300" alt="沙漠胡杨" class="rounded-lg shadow-md mx-auto max-w-full" id="homeImage">
-                </div>
-                <a href="#read" class="inline-block bg-primary text-white px-8 py-3 rounded-md hover:bg-dark transition-colors text-lg">
-                    开始阅读 <i class="fa fa-angle-right ml-2"></i>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 作品介绍 -->
-    <section id="intro" class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center text-primary mb-10">作品介绍</h2>
-            <div class="max-w-3xl mx-auto" id="introContent">
-                <p class="mb-4 text-gray-700">《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 作者介绍 -->
-    <section id="author" class="py-12 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center text-primary mb-10">作者介绍</h2>
-            <div class="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8" id="authorContent">
-                <img src="https://picsum.photos/id/1005/200/200" alt="作者头像" class="w-32 h-32 rounded-full object-cover border-4 border-light">
-                <div class="text-gray-700">
-                    <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
-                    <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 阅读板块 -->
-    <section id="read" class="py-12 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center text-primary mb-10">开始阅读</h2>
-            <div class="flex flex-col md:flex-row max-w-6xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
-                <!-- 章节列表 -->
-                <div class="md:w-1/4 md:border-r border-gray-200 p-6 bg-light">
-                    <h3 class="font-bold text-lg mb-4 text-primary">章节列表</h3>
-                    <div class="space-y-2 max-h-[500px] overflow-y-auto pr-2">
-                        <div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-primary" onclick="showChapter(1)">
-                            第一章：沙漠的召唤
-                        </div>
-                        <div class="chapter-item p-3 bg-white rounded-md cursor-pointer border-l-4 border-transparent" onclick="showChapter(2)">
-                            第二章：神秘的手帐
-                        </div>
-                    </div>
-                </div>
-                <!-- 阅读内容区 -->
-                <div class="md:w-3/4 p-6 md:p-10 read-area">
-                    <!-- 第一章内容 -->
-                    <div id="chapter1">
-                        <h3 class="text-xl font-bold mb-6 text-primary">第一章：沙漠的召唤</h3>
-                        <p class="mb-4 text-gray-700">烈日炙烤着无垠的沙漠，金黄的沙粒在阳光下闪烁着刺眼的光芒。</p>
-                    </div>
-
-                    <!-- 第二章内容 -->
-                    <div id="chapter2" class="hidden">
-                        <h3 class="text-xl font-bold mb-6 text-primary">第二章：神秘的手帐</h3>
-                        <p class="mb-4 text-gray-700">王磊靠在胡杨树下休息，指尖摩挲着树干上的奇怪符号。</p>
-                    </div>
-
-                    <div class="flex justify-between mt-10">
-                        <button class="bg-light text-primary px-6 py-2 rounded-md hover:bg-gray-200 transition-colors" onclick="prevChapter()">
-                            <i class="fa fa-angle-left mr-2"></i> 上一章
-                        </button>
-                        <button class="bg-light text-primary px-6 py-2 rounded-md hover:bg-gray-200 transition-colors" onclick="nextChapter()">
-                            下一章 <i class="fa fa-angle-right ml-2"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 评论板块 -->
-    <section id="comments" class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-bold text-center text-primary mb-10">读者评论</h2>
-            <div class="max-w-4xl mx-auto">
-                <!-- 评论状态提示（如果关闭） -->
-                <div id="commentClosedTip" class="bg-red-100 text-red-700 p-4 rounded-lg mb-6 hidden">
-                    <i class="fa fa-info-circle mr-2"></i> 评论功能已暂时关闭，感谢理解
-                </div>
-
-                <!-- 评论输入框（根据状态显示/隐藏） -->
-                <div class="bg-light p-6 rounded-lg shadow-sm mb-8" id="commentInputArea">
-                    <h3 class="text-lg font-semibold mb-4">发表评论</h3>
-                    <form id="commentForm">
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">昵称</label>
-                            <input type="text" class="form-input" id="commentName" placeholder="请输入您的昵称" required>
-                        </div>
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">评论内容</label>
-                            <textarea class="form-input h-32" id="commentContent" placeholder="分享您的阅读感受..." required></textarea>
-                        </div>
-                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
-                            提交评论
-                        </button>
-                    </form>
-                </div>
-
-                <!-- 评论列表 -->
-                <div id="commentList">
-                    <!-- 评论会从本地存储加载 -->
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 打赏板块 -->
-    <section id="reward" class="py-12 bg-light">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold text-primary mb-6">支持作者</h2>
-            <button id="openRewardModal" class="bg-primary text-white px-8 py-3 rounded-md hover:bg-dark transition-colors text-lg">
-                微信扫码打赏 <i class="fa fa-qrcode ml-2"></i>
-            </button>
-        </div>
-    </section>
-
-    <!-- 页脚 -->
-    <footer class="bg-dark text-white py-6">
-        <div class="container mx-auto px-4 text-center">
-            <p>《途·寻》小说平台 &copy; 2025 版权所有</p>
-        </div>
-    </footer>
-
-    <!-- 微信打赏弹窗 -->
-    <div id="rewardModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-sm p-6">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold text-primary">微信扫码打赏</h3>
-                <button id="closeRewardModal" class="text-gray-500 hover:text-gray-700">
-                    <i class="fa fa-times text-xl"></i>
-                </button>
-            </div>
-            <img src="https://picsum.photos/id/1060/200/200" alt="微信赞赏码" class="reward-qrcode mx-auto border-2 border-light rounded-md mb-4" id="rewardQrcode">
+        <div class="mt-6 text-center text-gray-500 text-sm">
+            <p>忘记密码？请联系系统管理员重置</p>
         </div>
     </div>
 
     <script>
-        // 移动端菜单切换
-        document.getElementById('menuBtn').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('hidden');
+        // 默认密码（首次登录后建议修改）
+        const ADMIN_PASSWORD = "admin123"; // 请替换为你自己的密码
+
+        // 显示/隐藏密码
+        document.getElementById('togglePwd').addEventListener('click', function() {
+            const pwdInput = document.getElementById('password');
+            const type = pwdInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            pwdInput.setAttribute('type', type);
+            this.innerHTML = type === 'password' ? '<i class="fa fa-eye-slash"></i>' : '<i class="fa fa-eye"></i>';
         });
 
-        // 章节切换功能
-        let currentChapter = 1;
-        const totalChapters = 2;
-
-        function showChapter(num) {
-            document.querySelectorAll('[id^="chapter"]').forEach(chapter => chapter.classList.add('hidden'));
-            document.getElementById('chapter' + num).classList.remove('hidden');
-            document.querySelectorAll('.chapter-item').forEach((item, index) => {
-                if (index + 1 === num) {
-                    item.classList.add('border-primary');
-                    item.classList.remove('border-transparent');
-                } else {
-                    item.classList.remove('border-primary');
-                    item.classList.add('border-transparent');
-                }
-            });
-            currentChapter = num;
-        }
-
-        function prevChapter() { if (currentChapter > 1) showChapter(currentChapter - 1); }
-        function nextChapter() { if (currentChapter < totalChapters) showChapter(currentChapter + 1); }
-
-        // 打赏弹窗控制
-        const openRewardBtn = document.getElementById('openRewardModal');
-        const closeRewardBtn = document.getElementById('closeRewardModal');
-        const rewardModal = document.getElementById('rewardModal');
-        openRewardBtn.addEventListener('click', () => rewardModal.classList.remove('hidden'));
-        closeRewardBtn.addEventListener('click', () => rewardModal.classList.add('hidden'));
-        rewardModal.addEventListener('click', (e) => { if (e.target === rewardModal) rewardModal.classList.add('hidden'); });
-
-        // 评论功能
-        document.getElementById('commentForm').addEventListener('submit', function(e) {
+        // 登录验证
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
-            const name = document.getElementById('commentName').value;
-            const content = document.getElementById('commentContent').value;
-            const date = new Date().toLocaleDateString();
+            const inputPwd = document.getElementById('password').value;
             
-            // 创建评论元素
-            const commentItem = document.createElement('div');
-            commentItem.className = 'comment-item';
-            commentItem.innerHTML = `
-                <div class="flex justify-between items-start">
-                    <h4 class="font-bold text-primary">${name}</h4>
-                    <span class="text-gray-500 text-sm">${date}</span>
-                </div>
-                <p class="mt-2 text-gray-700">${content}</p>
-                <div class="author-reply-area mt-3"></div> <!-- 作者回复区域 -->
-            `;
-            
-            // 添加到列表
-            document.getElementById('commentList').prepend(commentItem);
-            // 清空表单
-            this.reset();
-            // 保存到本地存储
-            saveComments();
-            alert('评论提交成功！');
+            if (inputPwd === ADMIN_PASSWORD) {
+                // 登录成功，存储登录状态
+                localStorage.setItem('isLoggedIn', 'true');
+                // 跳转到后台（使用两种跳转方式确保生效）
+                window.location.href = 'admin.html';
+                // 兼容处理：如果第一种跳转失败，300ms后尝试第二种
+                setTimeout(() => {
+                    if (window.location.pathname !== '/admin.html') {
+                        window.location.assign('https://whtbob.github.io/admin.html');
+                    }
+                }, 300);
+            } else {
+                alert('密码错误，请重新输入');
+                document.getElementById('password').focus();
+            }
         });
-
-        // 保存评论到本地存储
-        function saveComments() {
-            const comments = [];
-            document.querySelectorAll('.comment-item').forEach(item => {
-                // 获取作者回复（如果有）
-                const replyEl = item.querySelector('.author-reply');
-                const reply = replyEl ? {
-                    content: replyEl.querySelector('p').textContent,
-                    date: replyEl.querySelector('span').textContent
-                } : null;
-
-                comments.push({
-                    id: Date.now() + Math.random().toString(36).substr(2, 5), // 唯一ID
-                    name: item.querySelector('h4').textContent,
-                    date: item.querySelector('span').textContent,
-                    content: item.querySelector('p').textContent,
-                    reply: reply
-                });
-            });
-            localStorage.setItem('comments', JSON.stringify(comments));
-        }
-
-        // 加载本地存储的评论
-        function loadComments() {
-            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-            const commentList = document.getElementById('commentList');
-            commentList.innerHTML = '';
-            
-            // 检查评论是否关闭
-            const commentsEnabled = localStorage.getItem('commentsEnabled') !== 'false';
-            document.getElementById('commentInputArea').classList.toggle('hidden', !commentsEnabled);
-            document.getElementById('commentClosedTip').classList.toggle('hidden', commentsEnabled);
-
-            comments.forEach(comment => {
-                const commentItem = document.createElement('div');
-                commentItem.className = 'comment-item';
-                commentItem.setAttribute('data-id', comment.id);
-                
-                // 作者回复HTML
-                const replyHtml = comment.reply ? `
-                    <div class="author-reply mt-3">
-                        <div class="flex justify-between items-start">
-                            <h5 class="font-bold text-dark">作者回复</h5>
-                            <span class="text-gray-500 text-sm">${comment.reply.date}</span>
-                        </div>
-                        <p class="mt-1 text-gray-700">${comment.reply.content}</p>
-                    </div>
-                ` : '';
-                
-                commentItem.innerHTML = `
-                    <div class="flex justify-between items-start">
-                        <h4 class="font-bold text-primary">${comment.name}</h4>
-                        <span class="text-gray-500 text-sm">${comment.date}</span>
-                    </div>
-                    <p class="mt-2 text-gray-700">${comment.content}</p>
-                    <div class="author-reply-area mt-3">${replyHtml}</div>
-                `;
-                commentList.appendChild(commentItem);
-            });
-        }
-
-        // 页面加载时执行
-        window.onload = function() {
-            // 加载各种内容
-            if (localStorage.getItem('introContent')) {
-                document.getElementById('introContent').innerHTML = localStorage.getItem('introContent');
-            }
-            if (localStorage.getItem('authorContent')) {
-                document.getElementById('authorContent').innerHTML = localStorage.getItem('authorContent');
-            }
-            if (localStorage.getItem('homeImage')) {
-                document.getElementById('homeImage').src = localStorage.getItem('homeImage');
-            }
-            if (localStorage.getItem('rewardQrcode')) {
-                document.getElementById('rewardQrcode').src = localStorage.getItem('rewardQrcode');
-            }
-            // 加载评论
-            loadComments();
-        }
     </script>
 </body>
 </html>
