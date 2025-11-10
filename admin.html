@@ -3,50 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>途·寻 - 作者管理后台</title>
+    <title>作者后台</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#D2691E',
-                        dark: '#8B4513'
-                    }
-                }
-            }
-        }
+        tailwind.config = { theme: { extend: { colors: { primary: '#D2691E', dark: '#8B4513' } } }
     </script>
     <style>
-        .sidebar-link { transition: all 0.3s; }
         .sidebar-link.active { background-color: #D2691E; color: white; }
         .form-input { border: 1px solid #ddd; padding: 8px; border-radius: 4px; width: 100%; }
-        .image-item { position: relative; display: inline-block; margin: 10px; }
-        .image-delete { position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; width: 20px; height: 20px; text-align: center; cursor: pointer; font-size: 12px; }
     </style>
 </head>
 <body class="bg-gray-100">
     <!-- 登录验证 -->
     <script>
         if (localStorage.getItem('isLoggedIn') !== 'true') {
-            window.location.href = 'https://whtbob.github.io/login.html';
+            window.location.href = 'login.html';
         }
     </script>
 
     <div class="flex h-screen overflow-hidden">
-        <!-- 左侧导航 -->
+        <!-- 侧边栏 -->
         <div class="w-64 bg-gray-800 text-white shadow-lg">
             <div class="p-4 border-b border-gray-700">
                 <h1 class="text-xl font-bold flex items-center">
-                    <i class="fa fa-book mr-2"></i>途·寻管理后台
+                    <i class="fa fa-book mr-2"></i>小说管理后台
                 </h1>
             </div>
             <div class="p-2">
-                <a href="#dashboard" class="sidebar-link active block p-3 rounded mb-1 flex items-center">
-                    <i class="fa fa-dashboard w-6"></i> 仪表盘
-                </a>
-                <a href="#chapters" class="sidebar-link block p-3 rounded mb-1 flex items-center">
+                <a href="#chapters" class="sidebar-link active block p-3 rounded mb-1 flex items-center">
                     <i class="fa fa-list w-6"></i> 章节管理
                 </a>
                 <a href="#images" class="sidebar-link block p-3 rounded mb-1 flex items-center">
@@ -58,13 +43,10 @@
                 <a href="#author" class="sidebar-link block p-3 rounded mb-1 flex items-center">
                     <i class="fa fa-user w-6"></i> 作者介绍
                 </a>
-                <a href="#comments" class="sidebar-link block p-3 rounded mb-1 flex items-center">
-                    <i class="fa fa-comments w-6"></i> 评论管理
-                </a>
-                <a href="javascript:goToHome()" class="sidebar-link block p-3 rounded mb-1 flex items-center mt-6 bg-white text-primary font-medium">
+                <a href="javascript:goToHome()" class="sidebar-link block p-3 rounded mb-1 flex items-center mt-6 bg-white text-primary">
                     <i class="fa fa-home w-6"></i> 返回前台
                 </a>
-                <button onclick="logout()" class="w-full text-left sidebar-link block p-3 rounded mb-1 flex items-center bg-red-600 text-white font-medium">
+                <button onclick="logout()" class="w-full text-left sidebar-link block p-3 rounded mb-1 flex items-center bg-red-600 text-white">
                     <i class="fa fa-sign-out w-6"></i> 退出登录
                 </button>
             </div>
@@ -73,222 +55,114 @@
         <!-- 主内容区 -->
         <div class="flex-1 overflow-y-auto">
             <header class="bg-white shadow-sm p-4">
-                <div class="flex justify-between items-center">
-                    <h2 class="text-xl font-semibold text-gray-800" id="pageTitle">仪表盘</h2>
-                    <div class="text-gray-600">
-                        <i class="fa fa-user-circle mr-1"></i> 作者您好
-                    </div>
-                </div>
+                <h2 class="text-xl font-semibold text-gray-800" id="pageTitle">章节管理</h2>
             </header>
 
-            <!-- 仪表盘 -->
-            <div id="dashboardPage" class="p-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="bg-white rounded-lg shadow p-6 text-center">
-                        <div class="text-4xl font-bold text-primary mb-2">1,258</div>
-                        <div class="text-gray-600">总访问量</div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-6 text-center">
-                        <div class="text-4xl font-bold text-primary mb-2">2</div>
-                        <div class="text-gray-600">已发布章节</div>
-                    </div>
-                    <div class="bg-white rounded-lg shadow p-6 text-center">
-                        <div class="text-4xl font-bold text-primary mb-2" id="commentCount">0</div>
-                        <div class="text-gray-600">读者评论</div>
-                    </div>
-                </div>
-            </div>
-
             <!-- 章节管理 -->
-            <div id="chaptersPage" class="p-6 hidden">
+            <div id="chaptersPage" class="p-6">
                 <div class="bg-white rounded-lg shadow p-6 mb-6">
                     <h3 class="text-lg font-semibold mb-4">新增章节</h3>
                     <form id="addChapterForm">
                         <div class="mb-4">
                             <label class="block text-gray-700 mb-2">章节标题</label>
-                            <input type="text" class="form-input" placeholder="例如：第三章：沙漠古城" required>
+                            <input type="text" class="form-input" id="chapterTitle" placeholder="输入章节标题" required>
                         </div>
                         <div class="mb-4">
                             <label class="block text-gray-700 mb-2">章节内容</label>
-                            <textarea class="form-input h-40" placeholder="粘贴章节正文..." required></textarea>
+                            <textarea class="form-input h-40" id="chapterContent" placeholder="输入章节内容" required></textarea>
                         </div>
-                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
+                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark">
                             保存章节
                         </button>
                     </form>
                 </div>
+
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold mb-4">已发布章节</h3>
                     <table class="min-w-full">
                         <thead>
                             <tr class="border-b border-gray-200">
-                                <th class="py-3 text-left text-gray-700">序号</th>
-                                <th class="py-3 text-left text-gray-700">标题</th>
-                                <th class="py-3 text-left text-gray-700">操作</th>
+                                <th class="py-3 text-left">序号</th>
+                                <th class="py-3 text-left">标题</th>
+                                <th class="py-3 text-left">操作</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="border-b border-gray-200">
-                                <td class="py-3">1</td>
-                                <td class="py-3">第一章：沙漠的召唤</td>
-                                <td class="py-3">
-                                    <button class="text-blue-500 hover:text-blue-700 mr-3">编辑</button>
-                                    <button class="text-red-500 hover:text-red-700">删除</button>
-                                </td>
-                            </tr>
-                            <tr class="border-b border-gray-200">
-                                <td class="py-3">2</td>
-                                <td class="py-3">第二章：神秘的手帐</td>
-                                <td class="py-3">
-                                    <button class="text-blue-500 hover:text-blue-700 mr-3">编辑</button>
-                                    <button class="text-red-500 hover:text-red-700">删除</button>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody id="adminChapterList"></tbody>
                     </table>
                 </div>
             </div>
 
             <!-- 图片管理 -->
             <div id="imagesPage" class="p-6 hidden">
-                <div class="bg-white rounded-lg shadow p-6 mb-8">
-                    <h3 class="text-lg font-semibold mb-4">上传图片</h3>
-                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer mb-6" id="imageUploadArea">
-                        <input type="file" id="imageFile" class="hidden" accept="image/*">
-                        <i class="fa fa-cloud-upload text-4xl text-gray-400 mb-3"></i>
-                        <p class="text-gray-600">点击或拖拽图片至此处上传</p>
-                    </div>
-                    <div class="mb-4">
-                        <label class="block text-gray-700 mb-2">图片用途</label>
-                        <select id="imageType" class="form-input">
-                            <option value="homeImage">首页主图</option>
-                            <option value="rewardQrcode">打赏二维码</option>
-                        </select>
-                    </div>
-                    <button id="saveImage" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors disabled:opacity-50" disabled>
-                        保存图片
-                    </button>
-                </div>
-
                 <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold mb-4">已上传图片</h3>
-                    <div id="imageList">
-                        <div class="image-item">
-                            <img src="https://picsum.photos/id/1036/150/100" alt="首页图片" class="w-32 h-24 object-cover rounded border" id="preview-homeImage">
-                            <div class="image-delete" onclick="deleteImage('homeImage')">×</div>
-                            <p class="text-sm text-center mt-1">首页主图</p>
-                        </div>
-                        <div class="image-item">
-                            <img src="https://picsum.photos/id/1060/150/150" alt="打赏二维码" class="w-32 h-32 object-cover rounded border" id="preview-rewardQrcode">
-                            <div class="image-delete" onclick="deleteImage('rewardQrcode')">×</div>
-                            <p class="text-sm text-center mt-1">打赏二维码</p>
-                        </div>
+                    <h3 class="text-lg font-semibold mb-4">首页图片设置</h3>
+                    <div class="mb-6">
+                        <img id="homeImagePreview" src="https://i.ibb.co/8D6jL8n/default-home.jpg" alt="首页图片" class="w-64 h-40 object-cover rounded border mb-2">
+                        <input type="file" id="homeImageUpload" accept="image/*" class="mb-2">
+                        <button onclick="uploadImage('homeImage')" class="bg-primary text-white px-4 py-1 rounded hover:bg-dark">
+                            上传首页图片
+                        </button>
+                    </div>
+
+                    <h3 class="text-lg font-semibold mb-4">作者头像设置</h3>
+                    <div>
+                        <img id="authorImagePreview" src="https://i.ibb.co/ZYDt3bD/default-author.jpg" alt="作者头像" class="w-32 h-32 rounded-full object-cover border mb-2">
+                        <input type="file" id="authorImageUpload" accept="image/*" class="mb-2">
+                        <button onclick="uploadImage('authorImage')" class="bg-primary text-white px-4 py-1 rounded hover:bg-dark">
+                            上传头像
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- 作品介绍编辑 -->
+            <!-- 作品介绍 -->
             <div id="introPage" class="p-6 hidden">
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold mb-4">编辑作品介绍</h3>
-                    <form id="introForm">
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">作品介绍内容</label>
-                            <textarea class="form-input h-60" id="introEditor" required>《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。</textarea>
-                        </div>
-                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
-                            保存作品介绍
-                        </button>
-                    </form>
+                    <textarea class="form-input h-60" id="introEditor" required></textarea>
+                    <button onclick="saveIntro()" class="mt-4 bg-primary text-white px-6 py-2 rounded hover:bg-dark">
+                        保存
+                    </button>
                 </div>
             </div>
 
-            <!-- 作者介绍编辑 -->
+            <!-- 作者介绍 -->
             <div id="authorPage" class="p-6 hidden">
                 <div class="bg-white rounded-lg shadow p-6">
                     <h3 class="text-lg font-semibold mb-4">编辑作者介绍</h3>
-                    <form id="authorForm">
-                        <div class="mb-4">
-                            <label class="block text-gray-700 mb-2">作者介绍内容（支持HTML）</label>
-                            <textarea class="form-input h-60" id="authorEditor" required><img src="https://picsum.photos/id/1005/200/200" alt="作者头像" class="w-32 h-32 rounded-full object-cover border-4 border-light">
-<div class="text-gray-700">
-    <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
-    <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
-</div></textarea>
-                        </div>
-                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
-                            保存作者介绍
-                        </button>
-                    </form>
+                    <textarea class="form-input h-60" id="authorEditor" required></textarea>
+                    <button onclick="saveAuthor()" class="mt-4 bg-primary text-white px-6 py-2 rounded hover:bg-dark">
+                        保存
+                    </button>
                 </div>
             </div>
-
-            <!-- 评论管理 -->
-            <div id="commentsPage" class="p-6 hidden">
-                <div class="bg-white rounded-lg shadow p-6 mb-6">
-                    <h3 class="text-lg font-semibold mb-4">评论设置</h3>
-                    <div class="flex items-center">
-                        <label class="mr-4 text-gray-700">评论功能：</label>
-                        <label class="inline-flex items-center">
-                            <input type="radio" name="commentStatus" value="enabled" class="form-radio text-primary" checked>
-                            <span class="ml-2">开启</span>
-                        </label>
-                        <label class="inline-flex items-center ml-6">
-                            <input type="radio" name="commentStatus" value="disabled" class="form-radio text-primary">
-                            <span class="ml-2">关闭（防止网络暴力）</span>
-                        </label>
-                    </div>
-                </div>
-                <div class="bg-white rounded-lg shadow p-6">
-                    <h3 class="text-lg font-semibold mb-4">读者评论管理</h3>
-                    <table class="min-w-full">
-                        <thead>
-                            <tr class="border-b border-gray-200">
-                                <th class="py-3 text-left text-gray-700">序号</th>
-                                <th class="py-3 text-left text-gray-700">读者昵称</th>
-                                <th class="py-3 text-left text-gray-700">评论内容</th>
-                                <th class="py-3 text-left text-gray-700">操作</th>
-                            </tr>
-                        </thead>
-                        <tbody id="adminCommentList"></tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- 回复弹窗 -->
-    <div id="replyModal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center hidden">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-md p-6">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-xl font-bold text-primary">回复评论</h3>
-                <button id="closeReplyModal" class="text-gray-500 hover:text-gray-700">
-                    <i class="fa fa-times text-xl"></i>
-                </button>
-            </div>
-            <input type="hidden" id="replyCommentId">
-            <div class="mb-4">
-                <label class="block text-gray-700 mb-2">回复内容</label>
-                <textarea class="form-input h-32" id="replyContent" placeholder="输入您的回复..."></textarea>
-            </div>
-            <button id="saveReplyBtn" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
-                发送回复
-            </button>
         </div>
     </div>
 
     <script>
-        // 返回前台（强制绝对路径）
-        function goToHome() {
-            window.location.href = 'https://whtbob.github.io';
-        }
+        // 初始化数据库
+        const dbName = 'novelDB';
+        const dbVersion = 1;
+        let db;
 
-        // 退出登录
-        function logout() {
-            if (confirm('确定要退出登录吗？')) {
-                localStorage.removeItem('isLoggedIn');
-                window.location.href = 'https://whtbob.github.io/login.html';
-            }
+        function initDB() {
+            return new Promise((resolve, reject) => {
+                const request = indexedDB.open(dbName, dbVersion);
+                
+                request.onupgradeneeded = (e) => {
+                    db = e.target.result;
+                    if (!db.objectStoreNames.contains('chapters')) {
+                        db.createObjectStore('chapters', { keyPath: 'id', autoIncrement: true });
+                    }
+                };
+                
+                request.onsuccess = (e) => {
+                    db = e.target.result;
+                    resolve(db);
+                };
+                
+                request.onerror = (e) => reject(e.target.error);
+            });
         }
 
         // 导航切换
@@ -301,201 +175,181 @@
                 document.querySelectorAll('[id$="Page"]').forEach(page => page.classList.add('hidden'));
                 document.getElementById(targetId + 'Page').classList.remove('hidden');
                 document.getElementById('pageTitle').textContent = this.textContent.trim();
-                
-                if (targetId === 'comments') {
-                    loadAdminComments();
-                    loadCommentStatus();
-                } else if (targetId === 'intro') {
-                    // 加载作品介绍到编辑器
-                    const savedIntro = localStorage.getItem('introContent');
-                    if (savedIntro) {
-                        document.getElementById('introEditor').value = savedIntro;
-                    }
-                } else if (targetId === 'author') {
-                    // 加载作者介绍到编辑器
-                    const savedAuthor = localStorage.getItem('authorContent');
-                    if (savedAuthor) {
-                        document.getElementById('authorEditor').value = savedAuthor;
-                    }
-                } else if (targetId === 'images') {
-                    // 加载图片预览
-                    loadImagePreviews();
-                }
+
+                // 加载对应页面数据
+                if (targetId === 'chapters') loadAdminChapters();
+                if (targetId === 'intro') loadIntroEditor();
+                if (targetId === 'author') loadAuthorEditor();
+                if (targetId === 'images') loadImagePreviews();
             });
-        });
-
-        // 图片管理功能
-        const uploadArea = document.getElementById('imageUploadArea');
-        const fileInput = document.getElementById('imageFile');
-        const saveBtn = document.getElementById('saveImage');
-        let selectedImage = null;
-
-        uploadArea.addEventListener('click', () => fileInput.click());
-        uploadArea.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            uploadArea.classList.add('border-primary');
-        });
-        uploadArea.addEventListener('dragleave', () => {
-            uploadArea.classList.remove('border-primary');
-        });
-        uploadArea.addEventListener('drop', (e) => {
-            e.preventDefault();
-            uploadArea.classList.remove('border-primary');
-            if (e.dataTransfer.files[0]) {
-                selectedImage = e.dataTransfer.files[0];
-                saveBtn.disabled = false;
-                alert('图片已选中，点击"保存图片"即可上传');
-            }
-        });
-
-        fileInput.addEventListener('change', (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                selectedImage = file;
-                saveBtn.disabled = false;
-                alert('图片已选中，点击"保存图片"即可上传');
-            }
-        });
-
-        saveBtn.addEventListener('click', () => {
-            if (selectedImage) {
-                const reader = new FileReader();
-                const imageType = document.getElementById('imageType').value;
-                reader.onload = (event) => {
-                    localStorage.setItem(imageType, event.target.result);
-                    alert('图片保存成功！前台已更新');
-                    document.getElementById(`preview-${imageType}`).src = event.target.result;
-                    saveBtn.disabled = true;
-                };
-                reader.readAsDataURL(selectedImage);
-            }
-        });
-
-        function loadImagePreviews() {
-            // 加载首页图片预览
-            if (localStorage.getItem('homeImage')) {
-                document.getElementById('preview-homeImage').src = localStorage.getItem('homeImage');
-            }
-            // 加载打赏二维码预览
-            if (localStorage.getItem('rewardQrcode')) {
-                document.getElementById('preview-rewardQrcode').src = localStorage.getItem('rewardQrcode');
-            }
-        }
-
-        function deleteImage(type) {
-            if (confirm('确定要恢复默认图片吗？')) {
-                let defaultSrc = 'https://picsum.photos/id/1036/150/100';
-                if (type === 'rewardQrcode') {
-                    defaultSrc = 'https://picsum.photos/id/1060/150/150';
-                }
-                localStorage.setItem(type, defaultSrc);
-                document.getElementById(`preview-${type}`).src = defaultSrc;
-                alert('图片已恢复默认');
-            }
-        }
-
-        // 作品/作者介绍保存
-        document.getElementById('introForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            localStorage.setItem('introContent', document.getElementById('introEditor').value);
-            alert('作品介绍已更新，前台刷新可见');
-        });
-
-        document.getElementById('authorForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            localStorage.setItem('authorContent', document.getElementById('authorEditor').value);
-            alert('作者介绍已更新，前台刷新可见');
         });
 
         // 章节管理
-        document.getElementById('addChapterForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('章节保存成功（完整功能需配合数据库，当前为演示）');
-            this.reset();
-        });
-
-        // 评论管理功能
-        function loadAdminComments() {
-            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-            const commentList = document.getElementById('adminCommentList');
-            commentList.innerHTML = '';
+        async function loadAdminChapters() {
+            await initDB();
+            const transaction = db.transaction('chapters', 'readonly');
+            const store = transaction.objectStore('chapters');
+            const request = store.getAll();
             
-            comments.forEach((comment, index) => {
-                commentList.innerHTML += `
-                    <tr class="border-b border-gray-200">
-                        <td class="py-3">${index + 1}</td>
-                        <td class="py-3">${comment.name}</td>
-                        <td class="py-3">${comment.content}</td>
-                        <td class="py-3">
-                            <button class="text-blue-500 hover:text-blue-700 mr-3" onclick="openReplyModal('${comment.id}')">回复</button>
-                            <button class="text-red-500 hover:text-red-700" onclick="deleteComment(${index})">删除</button>
-                        </td>
-                    </tr>
-                `;
+            request.onsuccess = (e) => {
+                const chapters = e.target.result;
+                const chapterListEl = document.getElementById('adminChapterList');
+                chapterListEl.innerHTML = '';
+                
+                chapters.forEach((chapter, index) => {
+                    chapterListEl.innerHTML += `
+                        <tr class="border-b border-gray-200">
+                            <td class="py-3">${index + 1}</td>
+                            <td class="py-3">${chapter.title}</td>
+                            <td class="py-3">
+                                <button onclick="editChapter(${chapter.id})" class="text-blue-500 hover:text-blue-700 mr-3">编辑</button>
+                                <button onclick="deleteChapter(${chapter.id})" class="text-red-500 hover:text-red-700">删除</button>
+                            </td>
+                        </tr>
+                    `;
+                });
+            };
+        }
+
+        // 添加章节
+        document.getElementById('addChapterForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            await initDB();
+            const transaction = db.transaction('chapters', 'readwrite');
+            const store = transaction.objectStore('chapters');
+            
+            store.add({
+                title: document.getElementById('chapterTitle').value,
+                content: document.getElementById('chapterContent').value,
+                createdAt: new Date().toISOString()
             });
-            document.getElementById('commentCount').textContent = comments.length;
-        }
-
-        function openReplyModal(commentId) {
-            document.getElementById('replyCommentId').value = commentId;
-            document.getElementById('replyContent').value = '';
-            document.getElementById('replyModal').classList.remove('hidden');
-        }
-
-        document.getElementById('closeReplyModal').addEventListener('click', () => {
-            document.getElementById('replyModal').classList.add('hidden');
+            
+            transaction.oncomplete = () => {
+                alert('章节添加成功');
+                this.reset();
+                loadAdminChapters();
+            };
         });
 
-        document.getElementById('saveReplyBtn').addEventListener('click', () => {
-            const commentId = document.getElementById('replyCommentId').value;
-            const replyContent = document.getElementById('replyContent').value;
-            if (!replyContent) {
-                alert('请输入回复内容');
+        // 删除章节
+        function deleteChapter(id) {
+            if (confirm('确定要删除吗？')) {
+                const transaction = db.transaction('chapters', 'readwrite');
+                const store = transaction.objectStore('chapters');
+                store.delete(id);
+                
+                transaction.oncomplete = () => {
+                    alert('删除成功');
+                    loadAdminChapters();
+                };
+            }
+        }
+
+        // 图片上传（使用imgbb的免费API）
+        async function uploadImage(type) {
+            const fileInput = type === 'homeImage' ? 
+                document.getElementById('homeImageUpload') : 
+                document.getElementById('authorImageUpload');
+            
+            if (!fileInput.files[0]) {
+                alert('请选择图片');
                 return;
             }
 
-            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-            const idx = comments.findIndex(c => c.id === commentId);
-            if (idx !== -1) {
-                comments[idx].reply = {
-                    content: replyContent,
-                    date: new Date().toLocaleDateString()
-                };
-                localStorage.setItem('comments', JSON.stringify(comments));
-                loadAdminComments();
-                document.getElementById('replyModal').classList.add('hidden');
-                alert('回复成功！前台可见');
-            }
-        });
-
-        function deleteComment(index) {
-            if (confirm('确定要删除这条评论吗？')) {
-                const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-                comments.splice(index, 1);
-                localStorage.setItem('comments', JSON.stringify(comments));
-                loadAdminComments();
-                alert('评论已删除');
+            const formData = new FormData();
+            formData.append('image', fileInput.files[0]);
+            
+            try {
+                // 使用imgbb的免费API（无需注册，直接使用）
+                const response = await fetch('https://api.imgbb.com/1/upload?key=5340e4e5c571e5f77d469174f9a610c', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    // 保存图片链接
+                    if (type === 'homeImage') {
+                        localStorage.setItem('homeImage', result.data.url);
+                        document.getElementById('homeImagePreview').src = result.data.url;
+                    } else {
+                        // 更新作者头像（需要修改作者介绍的HTML）
+                        let authorContent = localStorage.getItem('authorContent') || `
+                            <img src="https://i.ibb.co/ZYDt3bD/default-author.jpg" alt="作者头像" class="w-32 h-32 rounded-full object-cover border-4 border-light">
+                            <div class="text-gray-700">
+                                <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
+                                <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
+                            </div>
+                        `;
+                        authorContent = authorContent.replace(/src="[^"]+"/, `src="${result.data.url}"`);
+                        localStorage.setItem('authorContent', authorContent);
+                        document.getElementById('authorImagePreview').src = result.data.url;
+                    }
+                    alert('图片上传成功');
+                }
+            } catch (error) {
+                alert('上传失败，请重试');
+                console.error(error);
             }
         }
 
-        // 评论开关
-        document.querySelectorAll('input[name="commentStatus"]').forEach(radio => {
-            radio.addEventListener('change', function() {
-                const isEnabled = this.value === 'enabled';
-                localStorage.setItem('commentsEnabled', isEnabled);
-                alert(isEnabled ? '评论功能已开启' : '评论功能已关闭，前台无法提交');
-            });
-        });
+        // 作品介绍编辑
+        function loadIntroEditor() {
+            const savedIntro = localStorage.getItem('introContent') || 
+                '《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。';
+            document.getElementById('introEditor').value = savedIntro;
+        }
 
-        function loadCommentStatus() {
-            const isEnabled = localStorage.getItem('commentsEnabled') !== 'false';
-            document.querySelector(`input[name="commentStatus"][value="${isEnabled ? 'enabled' : 'disabled'}"]`).checked = true;
+        function saveIntro() {
+            localStorage.setItem('introContent', document.getElementById('introEditor').value);
+            alert('保存成功');
+        }
+
+        // 作者介绍编辑
+        function loadAuthorEditor() {
+            const savedAuthor = localStorage.getItem('authorContent') || `
+                <img src="https://i.ibb.co/ZYDt3bD/default-author.jpg" alt="作者头像" class="w-32 h-32 rounded-full object-cover border-4 border-light">
+                <div class="text-gray-700">
+                    <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
+                    <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
+                </div>
+            `;
+            document.getElementById('authorEditor').value = savedAuthor;
+        }
+
+        function saveAuthor() {
+            localStorage.setItem('authorContent', document.getElementById('authorEditor').value);
+            alert('保存成功');
+        }
+
+        // 加载图片预览
+        function loadImagePreviews() {
+            if (localStorage.getItem('homeImage')) {
+                document.getElementById('homeImagePreview').src = localStorage.getItem('homeImage');
+            }
+            // 提取作者头像URL
+            const authorContent = localStorage.getItem('authorContent') || '';
+            const imgMatch = authorContent.match(/src="([^"]+)"/);
+            if (imgMatch && imgMatch[1]) {
+                document.getElementById('authorImagePreview').src = imgMatch[1];
+            }
+        }
+
+        // 返回前台
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+
+        // 退出登录
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'login.html';
         }
 
         // 页面初始化
-        window.onload = () => {
-            const comments = JSON.parse(localStorage.getItem('comments') || '[]');
-            document.getElementById('commentCount').textContent = comments.length;
+        window.onload = async () => {
+            await initDB();
+            loadAdminChapters();
         };
     </script>
 </body>
