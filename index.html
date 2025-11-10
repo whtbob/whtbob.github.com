@@ -37,6 +37,7 @@
             <div class="hidden md:flex items-center space-x-6">
                 <a href="#home" class="hover:text-light transition-colors">首页</a>
                 <a href="#intro" class="hover:text-light transition-colors">作品介绍</a>
+                <a href="#author" class="hover:text-light transition-colors">作者介绍</a>
                 <a href="#read" class="hover:text-light transition-colors">开始阅读</a>
                 <a href="#reward" class="hover:text-light transition-colors">支持作者</a>
                 <a href="admin.html" class="hover:text-light transition-colors">作者后台</a>
@@ -49,6 +50,7 @@
             <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
                 <a href="#home" class="block py-2 hover:text-light transition-colors">首页</a>
                 <a href="#intro" class="block py-2 hover:text-light transition-colors">作品介绍</a>
+                <a href="#author" class="block py-2 hover:text-light transition-colors">作者介绍</a>
                 <a href="#read" class="block py-2 hover:text-light transition-colors">开始阅读</a>
                 <a href="#reward" class="block py-2 hover:text-light transition-colors">支持作者</a>
                 <a href="admin.html" class="block py-2 hover:text-light transition-colors">作者后台</a>
@@ -63,7 +65,7 @@
                 <h1 class="text-3xl md:text-4xl font-bold text-primary mb-6">途·寻</h1>
                 <p class="text-xl text-gray-700 mb-8">沙漠探险 · 父子情 · 魔法元素</p>
                 <div class="mb-10">
-                    <img src="https://picsum.photos/id/1036/600/300" alt="沙漠胡杨" class="rounded-lg shadow-md mx-auto max-w-full">
+                    <img src="https://picsum.photos/id/1036/600/300" alt="沙漠胡杨" class="rounded-lg shadow-md mx-auto max-w-full" id="homeImage">
                 </div>
                 <a href="#read" class="inline-block bg-primary text-white px-8 py-3 rounded-md hover:bg-dark transition-colors text-lg">
                     开始阅读 <i class="fa fa-angle-right ml-2"></i>
@@ -76,8 +78,9 @@
     <section id="intro" class="py-12 bg-white">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl font-bold text-center text-primary mb-10">作品介绍</h2>
-            <div class="max-w-3xl mx-auto">
+            <div class="max-w-3xl mx-auto" id="introContent">
                 <p class="mb-4 text-gray-700">《途·寻》讲述了主角王磊穿越沙漠，寻找失踪父亲的冒险故事。途中他发现父亲留下的神秘手帐，解锁了沙漠中的魔法力量，在胡杨林、古城遗迹中揭开家族秘密，也领悟了亲情与成长的真谛。</p>
+                <p class="mb-4 text-gray-700">小说融合了真实的沙漠地理风貌与奇幻的魔法元素，既有惊心动魄的探险情节，也有温暖治愈的亲情描写，适合所有喜欢冒险与成长主题的读者。</p>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                     <div class="bg-light p-6 rounded-lg shadow-sm">
                         <i class="fa fa-compass text-3xl text-primary mb-4"></i>
@@ -94,6 +97,22 @@
                         <h3 class="font-bold text-lg mb-2">魔法元素</h3>
                         <p class="text-gray-600">神秘手帐解锁自然魔法，与沙漠精灵达成契约</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 作者介绍（新增） -->
+    <section id="author" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-center text-primary mb-10">作者介绍</h2>
+            <div class="max-w-3xl mx-auto flex flex-col md:flex-row items-center gap-8" id="authorContent">
+                <img src="https://picsum.photos/id/1005/200/200" alt="作者头像" class="w-32 h-32 rounded-full object-cover border-4 border-light">
+                <div class="text-gray-700">
+                    <h3 class="text-xl font-bold mb-3 text-primary">沙漠行者</h3>
+                    <p class="mb-3">自由撰稿人，曾徒步穿越中国三大沙漠，痴迷于西域文化与自然探险。</p>
+                    <p class="mb-3">《途·寻》是其首部长篇小说，灵感来源于真实的沙漠探险经历，希望通过故事传递“探索与成长”的力量。</p>
+                    <p>其他作品：《胡杨树下的约定》《沙海独行》等短篇故事。</p>
                 </div>
             </div>
         </div>
@@ -126,22 +145,18 @@
                         <h3 class="text-xl font-bold mb-6 text-primary">第一章：沙漠的召唤</h3>
                         <p class="mb-4 text-gray-700">烈日炙烤着无垠的沙漠，金黄的沙粒在阳光下闪烁着刺眼的光芒。王磊站在沙丘顶端，眯着眼睛眺望远方，汗水顺着他的脸颊滑落，在下巴处汇聚成滴，然后滴落在滚烫的沙地上，瞬间蒸发无踪。</p>
                         <p class="mb-4 text-gray-700">他已经在这片沙漠中跋涉了三天。三天来，除了偶尔掠过天际的飞鸟，他没有见到任何生命的迹象。随身携带的水已经不多了，他必须在今天找到水源，否则将很难撑过明天。</p>
-                        <p class="mb-4 text-gray-700">就在他感到绝望的时候，远处的地平线上突然出现了一抹绿色。王磊的心中燃起了希望，他加快脚步，朝着那抹绿色走去。随着距离的拉近，他看清了那是一棵孤独的胡杨树，矗立在茫茫沙海之中，显得格外突兀。</p>
                     </div>
 
                     <!-- 第二章内容 -->
                     <div id="chapter2" class="hidden">
                         <h3 class="text-xl font-bold mb-6 text-primary">第二章：神秘的手帐</h3>
                         <p class="mb-4 text-gray-700">王磊靠在胡杨树下休息，指尖摩挲着树干上的奇怪符号。他再次翻开父亲的笔记本，试图从那些潦草的字迹中找到线索。突然，一张折叠的纸条从笔记本中滑落，掉在沙地上。</p>
-                        <p class="mb-4 text-gray-700">他捡起纸条展开，上面是父亲熟悉的字迹：“当沙暴来临时，跟着胡杨的影子走，手帐会指引你找到水源——给磊磊”。纸条的背面，画着一个和树干上相同的沙暴符号。</p>
-                        <p class="mb-4 text-gray-700">“手帐？”王磊愣住了。父亲留下的这本笔记本，他一直以为只是普通的考察记录，难道还有别的秘密？他重新翻阅笔记本，发现最后几页的纸张材质明显不同，上面用银色墨水画着复杂的图案，像是某种地图。</p>
                     </div>
 
                     <!-- 第三章内容 -->
                     <div id="chapter3" class="hidden">
                         <h3 class="text-xl font-bold mb-6 text-primary">第三章：父子同行</h3>
-                        <p class="mb-4 text-gray-700">回忆像潮水般涌来。王磊想起小时候，父亲总在睡前给他讲沙漠的故事，说那里的星星比城市里亮一百倍，说胡杨能活三千年。那时他总缠着要一起去，父亲却总说：“等你长大了，能自己找到水源时再说。”</p>
-                        <p class="mb-4 text-gray-700">现在他真的来了，带着父亲的笔记本，走在这片既熟悉又陌生的沙漠里。他突然明白，父亲或许早就计划好了这一切——不是失踪，而是在某个地方等他，等他独自完成这场成长的试炼。</p>
+                        <p class="mb-4 text-gray-700">回忆像潮水般涌来。王磊想起小时候，父亲总在睡前给他讲沙漠的故事，说那里的星星比城市里亮一百倍，说胡杨能活三千年。</p>
                     </div>
 
                     <div class="flex justify-between mt-10">
@@ -185,7 +200,7 @@
                     <i class="fa fa-times text-xl"></i>
                 </button>
             </div>
-            <img src="https://picsum.photos/id/1060/200/200" alt="微信赞赏码" class="reward-qrcode mx-auto border-2 border-light rounded-md mb-4">
+            <img src="https://picsum.photos/id/1060/200/200" alt="微信赞赏码" class="reward-qrcode mx-auto border-2 border-light rounded-md mb-4" id="rewardQrcode">
             <p class="text-gray-600 text-center mb-2">用微信扫描二维码</p>
             <p class="text-gray-500 text-sm text-center">打赏金额随意，感谢支持！</p>
         </div>
@@ -203,13 +218,8 @@
         const totalChapters = 3;
 
         function showChapter(num) {
-            // 隐藏所有章节
-            document.querySelectorAll('[id^="chapter"]').forEach(chapter => {
-                chapter.classList.add('hidden');
-            });
-            // 显示选中章节
+            document.querySelectorAll('[id^="chapter"]').forEach(chapter => chapter.classList.add('hidden'));
             document.getElementById('chapter' + num).classList.remove('hidden');
-            // 更新选中样式
             document.querySelectorAll('.chapter-item').forEach((item, index) => {
                 if (index + 1 === num) {
                     item.classList.add('border-primary');
@@ -222,42 +232,45 @@
             currentChapter = num;
         }
 
-        // 上一章/下一章
-        function prevChapter() {
-            if (currentChapter > 1) {
-                showChapter(currentChapter - 1);
-            }
-        }
-
-        function nextChapter() {
-            if (currentChapter < totalChapters) {
-                showChapter(currentChapter + 1);
-            }
-        }
+        function prevChapter() { if (currentChapter > 1) showChapter(currentChapter - 1); }
+        function nextChapter() { if (currentChapter < totalChapters) showChapter(currentChapter + 1); }
 
         // 打赏弹窗控制
         const openRewardBtn = document.getElementById('openRewardModal');
         const closeRewardBtn = document.getElementById('closeRewardModal');
         const rewardModal = document.getElementById('rewardModal');
-
         openRewardBtn.addEventListener('click', () => rewardModal.classList.remove('hidden'));
         closeRewardBtn.addEventListener('click', () => rewardModal.classList.add('hidden'));
-        rewardModal.addEventListener('click', (e) => {
-            if (e.target === rewardModal) rewardModal.classList.add('hidden');
-        });
+        rewardModal.addEventListener('click', (e) => { if (e.target === rewardModal) rewardModal.classList.add('hidden'); });
 
         // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const targetId = this.getAttribute('href');
-                document.querySelector(targetId).scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
                 document.getElementById('mobileMenu').classList.add('hidden');
             });
         });
+
+        // 从本地存储加载修改内容（与后台同步）
+        window.onload = function() {
+            // 加载作品介绍
+            if (localStorage.getItem('introContent')) {
+                document.getElementById('introContent').innerHTML = localStorage.getItem('introContent');
+            }
+            // 加载作者介绍
+            if (localStorage.getItem('authorContent')) {
+                document.getElementById('authorContent').innerHTML = localStorage.getItem('authorContent');
+            }
+            // 加载首页图片
+            if (localStorage.getItem('homeImage')) {
+                document.getElementById('homeImage').src = localStorage.getItem('homeImage');
+            }
+            // 加载打赏二维码
+            if (localStorage.getItem('rewardQrcode')) {
+                document.getElementById('rewardQrcode').src = localStorage.getItem('rewardQrcode');
+            }
+        }
     </script>
 </body>
 </html>
