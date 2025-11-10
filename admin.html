@@ -22,3 +22,279 @@
             }
         }
     </script>
+    <style>
+        .sidebar-link { transition: all 0.3s; }
+        .sidebar-link.active { background-color: #D2691E; color: white; }
+        .form-input { border: 1px solid #ddd; padding: 8px; border-radius: 4px; width: 100%; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex h-screen overflow-hidden">
+        <!-- 左侧导航栏 -->
+        <div class="w-64 bg-gray-800 text-white shadow-lg">
+            <div class="p-4 border-b border-gray-700">
+                <h1 class="text-xl font-bold flex items-center">
+                    <i class="fa fa-book mr-2"></i>途·寻管理后台
+                </h1>
+            </div>
+            <div class="p-2">
+                <a href="#dashboard" class="sidebar-link active block p-3 rounded mb-1 flex items-center">
+                    <i class="fa fa-dashboard w-6"></i> 仪表盘
+                </a>
+                <a href="#chapters" class="sidebar-link block p-3 rounded mb-1 flex items-center">
+                    <i class="fa fa-list w-6"></i> 章节管理
+                </a>
+                <a href="#images" class="sidebar-link block p-3 rounded mb-1 flex items-center">
+                    <i class="fa fa-image w-6"></i> 图片管理
+                </a>
+                <a href="#comments" class="sidebar-link block p-3 rounded mb-1 flex items-center">
+                    <i class="fa fa-comments w-6"></i> 评论管理
+                </a>
+                <a href="index.html" class="sidebar-link block p-3 rounded mb-1 flex items-center mt-6 text-light">
+                    <i class="fa fa-home w-6"></i> 返回前台
+                </a>
+            </div>
+        </div>
+
+        <!-- 右侧主内容区 -->
+        <div class="flex-1 overflow-y-auto">
+            <!-- 顶部信息栏 -->
+            <header class="bg-white shadow-sm p-4">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-xl font-semibold text-gray-800" id="pageTitle">仪表盘</h2>
+                    <div class="text-gray-600">
+                        <i class="fa fa-user-circle mr-1"></i> 作者您好
+                    </div>
+                </div>
+            </header>
+
+            <!-- 仪表盘页面 -->
+            <div id="dashboardPage" class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow p-6 text-center">
+                        <div class="text-4xl font-bold text-primary mb-2">1,258</div>
+                        <div class="text-gray-600">总访问量</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6 text-center">
+                        <div class="text-4xl font-bold text-primary mb-2">5</div>
+                        <div class="text-gray-600">已发布章节</div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow p-6 text-center">
+                        <div class="text-4xl font-bold text-primary mb-2">24</div>
+                        <div class="text-gray-600">读者评论</div>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-semibold mb-4">最近数据</h3>
+                    <p class="text-gray-600">访问量较昨日增长 12%，感谢您的更新！</p>
+                </div>
+            </div>
+
+            <!-- 章节管理页面 -->
+            <div id="chaptersPage" class="p-6 hidden">
+                <div class="bg-white rounded-lg shadow p-6 mb-6">
+                    <h3 class="text-lg font-semibold mb-4">新增章节</h3>
+                    <form id="addChapterForm">
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">章节标题</label>
+                            <input type="text" class="form-input" placeholder="例如：第六章：沙漠古城" required>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block text-gray-700 mb-2">章节内容</label>
+                            <textarea class="form-input h-40" placeholder="粘贴章节正文..." required></textarea>
+                        </div>
+                        <button type="submit" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors">
+                            保存章节
+                        </button>
+                    </form>
+                </div>
+
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-semibold mb-4">已发布章节</h3>
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="py-3 text-left text-gray-700">序号</th>
+                                <th class="py-3 text-left text-gray-700">标题</th>
+                                <th class="py-3 text-left text-gray-700">发布时间</th>
+                                <th class="py-3 text-left text-gray-700">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-3">1</td>
+                                <td class="py-3">第一章：沙漠的召唤</td>
+                                <td class="py-3">2025-11-10</td>
+                                <td class="py-3">
+                                    <button class="text-blue-500 hover:text-blue-700 mr-3">编辑</button>
+                                    <button class="text-red-500 hover:text-red-700">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-3">2</td>
+                                <td class="py-3">第二章：神秘的手帐</td>
+                                <td class="py-3">2025-11-10</td>
+                                <td class="py-3">
+                                    <button class="text-blue-500 hover:text-blue-700 mr-3">编辑</button>
+                                    <button class="text-red-500 hover:text-red-700">删除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 图片管理页面 -->
+            <div id="imagesPage" class="p-6 hidden">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-semibold mb-4">上传微信赞赏码</h3>
+                    <div class="border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-primary transition-colors cursor-pointer mb-6" id="qrcodeUploadArea">
+                        <input type="file" id="qrcodeFile" class="hidden" accept="image/*">
+                        <i class="fa fa-cloud-upload text-4xl text-gray-400 mb-3"></i>
+                        <p class="text-gray-600">点击或拖拽图片至此处上传</p>
+                        <p class="text-gray-500 text-sm mt-2">支持JPG/PNG格式，建议尺寸200×200</p>
+                    </div>
+
+                    <div id="qrcodePreview" class="mb-6 hidden">
+                        <h4 class="text-gray-700 mb-2">预览图</h4>
+                        <img id="previewImage" src="" alt="赞赏码预览" class="w-32 h-32 border border-gray-200 rounded">
+                    </div>
+
+                    <button id="saveQrcode" class="bg-primary text-white px-6 py-2 rounded hover:bg-dark transition-colors disabled:opacity-50" disabled>
+                        保存赞赏码
+                    </button>
+                </div>
+            </div>
+
+            <!-- 评论管理页面 -->
+            <div id="commentsPage" class="p-6 hidden">
+                <div class="bg-white rounded-lg shadow p-6">
+                    <h3 class="text-lg font-semibold mb-4">读者评论</h3>
+                    <table class="min-w-full">
+                        <thead>
+                            <tr class="border-b border-gray-200">
+                                <th class="py-3 text-left text-gray-700">序号</th>
+                                <th class="py-3 text-left text-gray-700">读者昵称</th>
+                                <th class="py-3 text-left text-gray-700">评论内容</th>
+                                <th class="py-3 text-left text-gray-700">时间</th>
+                                <th class="py-3 text-left text-gray-700">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-3">1</td>
+                                <td class="py-3">沙漠旅行者</td>
+                                <td class="py-3">第一章太精彩了，期待后续！</td>
+                                <td class="py-3">2025-11-10 08:30</td>
+                                <td class="py-3">
+                                    <button class="text-red-500 hover:text-red-700">删除</button>
+                                </td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-3">2</td>
+                                <td class="py-3">风吹沙</td>
+                                <td class="py-3">父亲为什么会失踪？有伏笔啊</td>
+                                <td class="py-3">2025-11-10 10:15</td>
+                                <td class="py-3">
+                                    <button class="text-red-500 hover:text-red-700">删除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 脚本 -->
+    <script>
+        // 导航切换
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // 切换导航激活状态
+                document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+                
+                // 切换页面显示
+                const targetId = this.getAttribute('href').substring(1); // 取 # 后面的部分
+                document.querySelectorAll('[id$="Page"]').forEach(page => {
+                    page.classList.add('hidden');
+                });
+                document.getElementById(targetId + 'Page').classList.remove('hidden');
+                
+                // 更新页面标题
+                document.getElementById('pageTitle').textContent = this.textContent.trim();
+            });
+        });
+
+        // 赞赏码上传功能
+        const uploadArea = document.getElementById('qrcodeUploadArea');
+        const fileInput = document.getElementById('qrcodeFile');
+        const previewArea = document.getElementById('qrcodePreview');
+        const previewImage = document.getElementById('previewImage');
+        const saveBtn = document.getElementById('saveQrcode');
+
+        uploadArea.addEventListener('click', () => fileInput.click());
+
+        fileInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    previewImage.src = event.target.result;
+                    previewArea.classList.remove('hidden');
+                    saveBtn.disabled = false;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.classList.add('border-primary', 'bg-light/30');
+        });
+
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.classList.remove('border-primary', 'bg-light/30');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.classList.remove('border-primary', 'bg-light/30');
+            if (e.dataTransfer.files[0]) {
+                fileInput.files = e.dataTransfer.files;
+                fileInput.dispatchEvent(new Event('change'));
+            }
+        });
+
+        saveBtn.addEventListener('click', () => {
+            alert('赞赏码保存成功！已同步到前台打赏弹窗');
+        });
+
+        // 新增章节表单提交
+        document.getElementById('addChapterForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('章节保存成功！读者已可以看到新章节');
+            this.reset(); // 清空表单
+        });
+
+        // 删除按钮功能
+        document.querySelectorAll('button:text-red-500').forEach(btn => {
+            btn.addEventListener('click', function() {
+                if (confirm('确定要删除吗？')) {
+                    this.closest('tr').remove(); // 移除当前行
+                }
+            });
+        });
+
+        // 编辑按钮功能
+        document.querySelectorAll('button:text-blue-500').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const chapterTitle = this.closest('tr').querySelector('td:nth-child(2)').textContent;
+                alert(`即将编辑：${chapterTitle}\n（实际使用时会弹出编辑框）`);
+            });
+        });
+    </script>
+</body>
+</html>
